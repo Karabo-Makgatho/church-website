@@ -13,7 +13,7 @@ h2, h3, h4, h5, p {
 
 /* HEADER */
 #church-header {
-    position: sticky;
+    position: fixed;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
