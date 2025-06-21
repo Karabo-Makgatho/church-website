@@ -1,3 +1,4 @@
+/* GENERAL STYLING */
 body {
     margin: 0;
     padding: 0;
@@ -5,10 +6,12 @@ body {
     background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
     color: #333;
 }
-h2{
+
+h2, h3, h4, h5, p {
     text-align: center;
 }
 
+/* HEADER */
 #church-header {
     position: sticky;
     display: flex;
@@ -16,19 +19,25 @@ h2{
     justify-content: center;
     align-items: center;
     background-color: white;
-    padding: 0px 0;
+    padding: 10px;
 }
 
 #church-header img {
-    height: 200px;
+    height: auto;
+    max-height: 150px;
+    width: auto;
+    max-width: 90%;
     margin: 10px;
     object-fit: contain;
 }
 
+/* NAVIGATION */
 #tabs-top {
     background-color: royalblue;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     padding: 15px 0;
     position: sticky;
     top: 0;
@@ -41,16 +50,17 @@ h2{
     font-weight: bold;
     padding: 10px 20px;
     transition: background 0.3s;
+    border-radius: 5px;
 }
 
 #tabs-top a:hover {
     background-color: #003cb3;
-    border-radius: 5px;
 }
 
+/* SLIDES */
 .slide {
     display: none;
-    padding: 40px;
+    padding: 30px 20px;
     max-width: 900px;
     margin: auto;
     background: white;
@@ -79,25 +89,25 @@ h2{
     cursor: pointer;
 }
 
-
+/* LEADERS SECTION */
 .leaders-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Ensures it adjusts on smaller screens */
+    flex-wrap: wrap;
     padding: 20px;
     gap: 20px;
 }
 
 .leader {
     text-align: center;
-    max-width: 45%;
+    flex: 1 1 45%;
 }
 
 .leader img {
     width: 100%;
     height: auto;
-    border-radius: 10px; /* Optional: rounded corners */
+    border-radius: 10px;
 }
 
 .leader p {
@@ -106,60 +116,24 @@ h2{
     font-size: 18px;
 }
 
-
-
+/* FOOTER */
 .tabs-bottom {
     background-color: royalblue;
     color: white;
-    padding: 15px 40px; /* increased side padding for breathing space */
+    padding: 20px;
     display: flex;
-    justify-content: space-between; /* push items to edges */
-    align-items: center;
-    flex-wrap: nowrap; /* keep on one line */
-    text-align: left; /* default left align for left box */
-}
-
-.contact-box {
-    font-size: 16px;
-    padding-left: 20px; /* push it a bit from left edge */
-    max-width: 45%;
-}
-
-.contact-box strong {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 18px;
-}
-
-.contact-box a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    display: block;
-    margin: 3px 0;
-    transition: color 0.3s;
-}
-
-.tabs-bottom {
-    background-color: royalblue;
-    color: white;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .contact-box, .visit-box {
-    flex: 1;
-    max-width: 45%;
+    flex: 1 1 300px;
 }
 
 .contact-box {
     text-align: left;
-    padding-left: 60px;
-    margin-left: 200px;
 }
 
 .contact-box strong {
@@ -180,8 +154,6 @@ h2{
 
 .visit-box {
     text-align: right;
-    padding-right: 20px;
-    margin-right: 300px;
 }
 
 .visit-box a {
@@ -194,82 +166,45 @@ h2{
 
 .contact-box a:hover,
 .visit-box a:hover {
-    color: #ffc107; /* nice gold hover color */
+    color: #ffc107;
 }
 
-
-@keyframes fade {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-
-
-
-
-
-
-
-/*mission page styling*/
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
-    color: #333;
-}
-h3, p{
-    text-align: center;
-}
-#tabs-top {
-    background-color: royalblue;
+/* MISSION SECTION */
+#mission {
     display: flex;
-    justify-content: space-around;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-#tabs-top a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
-    transition: background 0.3s;
-}
-
-#tabs-top a:hover {
-    background-color: #003cb3;
-    border-radius: 5px;
-}
-
-
-
-
-
-/*gallery page styling*/
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 20px;
 }
 
-.image-gallery img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
+#mission img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+    margin-top: 20px;
 }
 
-.image-gallery img:hover {
-    transform: scale(1.05);
+/* CORE VALUES SECTION */
+.core-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
 }
-/*events page styling*/
+
+.core-values img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    margin-top: 20px;
+}
+
+/* GALLERY & EVENTS */
+.image-gallery,
 .image-events {
     display: flex;
     flex-wrap: wrap;
@@ -278,8 +213,10 @@ h3, p{
     padding: 20px;
 }
 
+.image-gallery img,
 .image-events img {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 300px;
     object-fit: cover;
     border-radius: 8px;
@@ -287,55 +224,58 @@ h3, p{
     transition: transform 0.3s ease;
 }
 
+.image-gallery img:hover,
 .image-events img:hover {
     transform: scale(1.05);
 }
-/*Bible Academy*/
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
-    color: #333;
-}
-h4{
-    text-align: center;
-}
-h5{
-    text-align: center;
-    font-weight: 900;
+
+/* ANIMATIONS */
+@keyframes fade {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
-
-
-
-
-/* RESPONSIVENESS */
+/* MOBILE RESPONSIVENESS */
 @media screen and (max-width: 768px) {
-  #church-header img {
-    width: 60px;
-  }
+    #church-header img {
+        max-height: 100px;
+    }
 
-  #tabs-top {
-    flex-direction: column;
-  }
+    #tabs-top {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  #tabs-top a {
-    padding: 10px;
-    font-size: 14px;
-  }
+    #tabs-top a {
+        font-size: 14px;
+    }
 
-  .slide h2 {
-    font-size: 22px;
-  }
+    .leaders-container {
+        flex-direction: column;
+    }
 
-  .slide p {
-    font-size: 16px;
-  }
+    .leader {
+        max-width: 100%;
+    }
 
-  .contact-box,
-  .visit-box {
-    flex: 1 1 100%;
-    padding: 15px 0;
-  }
+    .tabs-bottom {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .contact-box,
+    .visit-box {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .visit-box {
+        text-align: center;
+    }
+
+    #mission, .core-values {
+        padding: 10px;
+    }
 }
