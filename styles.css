@@ -57,6 +57,7 @@ h2, h3, h4, h5, p {
     background-color: #003cb3;
 }
 
+
 /* SLIDES */
 .slide {
     display: none;
@@ -278,4 +279,84 @@ h2, h3, h4, h5, p {
     #mission, .core-values {
         padding: 10px;
     }
+}
+/*Bible Academy*/
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #fefefe;
+  color: #333;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #2a2a2a;
+}
+
+blockquote {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
+p{
+    font-size: x-large;
+}
+.pdf-list {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.pdf-list li {
+  margin: 10px 0;
+}
+
+.pdf-list a {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+.pdf-list a:hover {
+  text-decoration: underline;
+}
+
+#doctrine-committee .pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10%;
+  border: 3px solid #0077cc;
+}
+
+.profile h3, .profile h4 {
+  margin-top: 10px;
+  font-weight: bold;
 }
