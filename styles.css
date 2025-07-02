@@ -360,3 +360,117 @@ p{
   margin-top: 10px;
   font-weight: bold;
 }
+/*newsletters*/
+/* Reset some default styles */
+
+
+
+header p {
+  margin-top: 0.3em;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Main sections */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Each month container */
+section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Hide native checkbox */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Label as clickable header */
+label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: royalblue;
+  cursor: pointer;
+  user-select: none;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: royalblue;
+}
+
+/* Arrow icon */
+label::after {
+  content: "▶";
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+  color: gold;
+}
+
+/* Rotate arrow when checked */
+input[type="checkbox"]:checked + label::after {
+  transform: rotate(90deg);
+}
+
+/* Newsletter list styles */
+ul.newsletter-list {
+  margin-top: 15px;
+  padding-left: 20px;
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Show list when checked */
+input[type="checkbox"]:checked ~ ul.newsletter-list {
+  max-height: 500px; /* enough to show content */
+}
+
+/* List items */
+ul.newsletter-list li {
+  margin-bottom: 12px;
+}
+
+ul.newsletter-list a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  border-bottom: 1px dotted black;
+  transition: color 0.3s ease, border-bottom-style 0.3s ease;
+}
+
+ul.newsletter-list a:hover,
+ul.newsletter-list a:focus {
+  color: royalblue;
+  border-bottom-style: solid;
+}
+
+/* Responsive typography */
+@media (max-width: 480px) {
+  body {
+    padding: 15px 10px;
+  }
+
+  main {
+    max-width: 100%;
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
+
+  ul.newsletter-list a {
+    font-size: 0.95rem;
+  }
+}
