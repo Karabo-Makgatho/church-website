@@ -32,6 +32,79 @@ h2, h3, h4, h5, p {
 }
 
 /* NAVIGATION */
+
+/* Base styles */
+.navbar {
+  background-color: royalblue;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+}
+
+/* Hide checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* Hamburger icon */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Nav links */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px;
+  display: inline-block;
+}
+
+.menu a:hover {
+  background-color: #00695c;
+  border-radius: 5px;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  #menu-toggle:checked ~ .menu {
+    display: flex;
+  }
+
+  .menu li {
+    text-align: center;
+    margin: 5px 0;
+  }
+}
+
 #tabs-top {
     background-color: royalblue;
     display: flex;
