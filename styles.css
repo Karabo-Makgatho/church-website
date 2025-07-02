@@ -7,10 +7,14 @@ body {
     color: #333;
 }
 
-h2, h3, h4, h5, p {
+h2, h3, h4, h5{
     text-align: center;
 }
+p{
+  font-size: medium;
+    text-align: center;
 
+}
 /* HEADER */
 #church-header {
     position: sticky;
@@ -32,87 +36,101 @@ h2, h3, h4, h5, p {
 }
 
 /* NAVIGATION */
-/* Navbar container */
-.navbar {
-  background-color: #004d40;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 10px 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+/* NAV WRAPPER (relative for positioning) */
+.nav-wrapper {
+  position: fixed;
+  top: 120px;  /* below header */
+  bottom: 80px; /* above footer */
+  left: 0;
+  z-index: 9999;
 }
 
-/* Hide the menu toggle checkbox */
-#menu-toggle {
-  display: none;
-}
 
-/* Hamburger icon */
-.hamburger {
-  display: none;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Nav menu */
-.menu {
+/* NAV BAR */
+.nav-bar {
+  position: absolute;
+  top: 200px;
+  left: -20px; /* hidden off screen */
+  width: 250px;
+  height: 100%;
+  background-color: royalblue;
+  border-radius: 0 8px 8px 0;
+  padding: 20px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+}
+
+/* Show nav when checkbox checked */
+#menu-toggle:checked ~ .nav-bar {
+  left: 0;
+}
+
+
+/* Nav links */
+.nav-bar ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
 }
 
-.menu li {
-  margin: 0 10px;
+.nav-bar li {
+  width: 100%;
+  text-align: center;
 }
 
-.menu a {
+.nav-bar a {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  padding: 10px;
-  display: inline-block;
-  transition: background-color 0.2s;
+  font-size: 18px;
+  padding: 10px 15px;
+  display: block;
+  border-radius: 4px;
 }
 
-.menu a:hover {
-  background-color: #00695c;
-  border-radius: 5px;
+.nav-bar a:hover {
+  background-color: #003e94;
 }
 
-/* ========== MOBILE STYLES ========== */
+/* MAIN content: push right with margin */
+main {
+  margin-left: 0;
+  padding: 20px;
+  margin-top: 120px;  /* below header */
+  margin-bottom: 80px; /* above footer */
+  transition: margin-left 0.3s ease;
+}
+
+/* When nav is open, push main right */
+#menu-toggle:checked ~ .nav-bar ~ main {
+  margin-left: 250px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  /* Show hamburger icon */
+  /* Keep hamburger visible on mobile */
   .hamburger {
-    display: block;
+    top: 110px;
+    left: 10px;
   }
 
-  /* Stack menu items vertically */
-  .menu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    padding: 0;
+  /* Nav width smaller on small screens */
+  .nav-bar {
+    width: 200px;
   }
 
-  /* Show menu when checkbox is checked */
-  #menu-toggle:checked ~ .menu {
-    display: flex;
-  }
-
-  .menu li {
-    margin: 5px 0;
-  }
-
-  .menu a {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
+  #menu-toggle:checked ~ .nav-bar ~ main {
+    margin-left: 200px;
   }
 }
 
