@@ -32,18 +32,6 @@ h2, h3, h4, h5, p {
 }
 
 /* NAVIGATION */
-#tabs-top {
-    background-color: royalblue;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
 #tabs-top a {
     color: white;
     text-decoration: none;
@@ -55,6 +43,18 @@ h2, h3, h4, h5, p {
 
 #tabs-top a:hover {
     background-color: #003cb3;
+}
+#tabs-top {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #004d40; /* match your design */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 
