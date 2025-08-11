@@ -1,179 +1,254 @@
-/* GENERAL STYLING */
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
-    color: #333;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  color: #333;
 }
 
-h2, h3, h4, h5{
-    text-align: center;
-}
-p{
-  font-size: medium;
-  text-align: center;
-}
-
-/* HEADER */
+/* HEADER LOGOS */
 #church-header {
-    position: sticky;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 15px 10px;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+  border-bottom: 2px solid #004aad; /* dark thin blue line */
 }
-
 #church-header img {
-    height: auto;
-    max-height: 150px;
-    width: auto;
-    max-width: 90%;
-    margin: 10px;
-    object-fit: contain;
+  max-height: 120px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
 }
 
-/* NAVIGATION */
+/* HAMBURGER - always visible, fixed position */
+#hamburger {
+  position: fixed;
+  top: 100px;
+  left: 15px;
+  font-size: 32px;
+  color: white;
+  background: royalblue;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1100;
+  user-select: none;
+}
+
+/* NAVIGATION MENU - hidden off-screen initially */
 #tabs-top {
-    background-color: royalblue;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  position: fixed;
+  top: 135px; /* height of header logos */
+  left: -260px; /* hidden left offscreen */
+  width: 250px;
+  height: calc(100% - 135px);
+  background-color: royalblue;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+  z-index: 1050;
 }
 
+/* When open, slide in */
+#tabs-top.open {
+  left: 0;
+}
+
+/* Navigation links styling */
 #tabs-top a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
-    transition: background 0.3s;
-    border-radius: 5px;
+  display: block;
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: normal;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 #tabs-top a:hover {
-    background-color: #003cb3;
+  background-color: #003cb3;
 }
 
+/* SLIDESHOW CONTAINER */
+.slideshow-container {
+  position: relative;
+  max-width: 900px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  background: white;
+}
 
-/* SLIDES */
+/* Slides */
 .slide {
-    display: none;
-    padding: 30px 20px;
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: fade 1s;
+  display: none;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  user-select: none;
+  transition: opacity 0.5s ease-in-out;
 }
-
 .slide.active {
-    display: block;
+  display: block;
+  animation: fadein 1s ease;
 }
 
-.slider-buttons {
-    text-align: center;
-    margin-top: 20px;
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-.slider-buttons button {
-    background-color: royalblue;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 8px;
-    margin: 0 10px;
-    cursor: pointer;
+/* Slide caption */
+.slide-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  color: white;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 50, 0.6);
+  padding: 8px 15px;
+  border-radius: 6px;
+  max-width: 80%;
+  user-select: none;
+  font-weight: 700;
+  text-shadow: 0 0 5px black;
 }
 
-/* LEADERS SECTION */
+/* MAIN CONTENT */
+main {
+  max-width: 900px;
+  margin: 20px auto 50px;
+  padding: 25px 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+main h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: royalblue;
+}
+
+main p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* LEADERS CONTAINER */
 .leaders-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    gap: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 40px;
 }
-
 .leader {
-    text-align: center;
-    flex: 1 1 45%;
+  flex: 1 1 300px;
+  max-width: 400px;
+  text-align: center;
 }
-
 .leader img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
-
 .leader p {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 18px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: royalblue;
 }
 
-/* FOOTER */
-.tabs-bottom {
-    background-color: royalblue;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
+/*events page*\
+/* events.css */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 20px;
 }
 
-.contact-box, .visit-box {
-    flex: 1 1 300px;
+main {
+  max-width: 900px;
+  margin: auto;
 }
 
-.contact-box {
-    text-align: left;
+h1 {
+  text-align: center;
+  color: royalblue;
+  margin-bottom: 30px;
 }
 
-.contact-box strong {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 18px;
+.accordion {
+  background-color: royalblue;
+  color: white;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.contact-box a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    display: block;
-    margin: 3px 0;
-    transition: color 0.3s;
+.accordion:hover,
+.accordion.active {
+  background-color: #003cb3;
 }
 
-.visit-box {
-    text-align: right;
+.panel {
+  padding: 0 20px 20px 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background-color: white;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
-.visit-box a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
+.panel h3 {
+  color: royalblue;
+  margin-top: 15px;
 }
 
-.contact-box a:hover,
-.visit-box a:hover {
-    color: #ffc107;
+.panel img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px 10px 10px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  object-fit: cover;
+  display: inline-block;
 }
-
 /* MISSION SECTION */
 #mission {
     display: flex;
@@ -208,112 +283,32 @@ p{
     margin-top: 20px;
 }
 
-/* GALLERY & EVENTS */
-.image-gallery,
-.image-events {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+/* GALLERY */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.image-gallery img,
-.image-events img {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+.image-gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.image-gallery img:hover,
-.image-events img:hover {
-    transform: scale(1.05);
+.image-gallery img:hover {
+  transform: scale(1.05);
 }
 
-/* ANIMATIONS */
-@keyframes fade {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-}
 
-/* MOBILE RESPONSIVENESS */
-@media screen and (max-width: 768px) {
-    #church-header img {
-        max-height: 100px;
-    }
-
-    #tabs-top {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #tabs-top a {
-        font-size: 14px;
-    }
-
-    .leaders-container {
-        flex-direction: column;
-    }
-
-    .leader {
-        max-width: 100%;
-    }
-
-    .tabs-bottom {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-    .contact-box,
-    .visit-box {
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .visit-box {
-        text-align: center;
-    }
-
-    #mission, .core-values {
-        padding: 10px;
-    }
-}
-/*Bible Academy*/
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #fefefe;
-  color: #333;
-}
-
-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-h1, h2 {
-  text-align: center;
-  color: #2a2a2a;
-}
-
-blockquote {
-  text-align: center;
-  font-style: italic;
-  color: #555;
-  margin-top: 10px;
-}
-p{
-    font-size: x-large;
-}
+/*bible academy*/
 .pdf-list {
   list-style: none;
   padding-left: 0;
@@ -364,36 +359,8 @@ p{
   margin-top: 10px;
   font-weight: bold;
 }
-/*newsletters*/
-/* Reset some default styles */
 
 
-
-header p {
-  margin-top: 0.3em;
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-/* Main sections */
-main {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-/* Each month container */
-section {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* Hide native checkbox */
-input[type="checkbox"] {
-  display: none;
-}
 
 /* Label as clickable header */
 label {
@@ -458,23 +425,4 @@ ul.newsletter-list a:hover,
 ul.newsletter-list a:focus {
   color: royalblue;
   border-bottom-style: solid;
-}
-
-/* Responsive typography */
-@media (max-width: 480px) {
-  body {
-    padding: 15px 10px;
-  }
-
-  main {
-    max-width: 100%;
-  }
-
-  label {
-    font-size: 1.1rem;
-  }
-
-  ul.newsletter-list a {
-    font-size: 0.95rem;
-  }
 }
