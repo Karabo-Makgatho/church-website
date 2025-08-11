@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Welcome to International St John's Apostolic Faith Mission Church Events." />
+  <meta name="keywords" content="church, faith, mission, gospel, worship, bible, events, St John's, Apostolic, South Africa" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events - International St John's Apostolic Faith Mission Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+
+  <!-- Header logos -->
+  <header id="church-header">
+    <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" />
+    <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" />
+    <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" />
+    <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" />
+  </header>
+
+  <!-- Navigation + Hamburger -->
+  <div class="nav-wrapper">
+    <div id="hamburger">&#9776;</div>
+    <nav id="tabs-top" class="closed">
+      <a href="index.html">HOME PAGE</a>
+      <a href="mission.html">MISSION & VISION</a>
+      <a href="values.html">OUR CORE VALUES</a>
+      <a href="events.html">EVENTS</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="bibleacademy.html">BIBLE ACADEMY</a>
+      <a href="newsletters.html">NEWSLETTERS</a>
+      <a href="contact.html">CONTACT US</a>
+
+    </nav>
+  </div>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Minimal styles for contact page */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
+      margin: 0;
+      padding: 0 15px;
+      color: #333;
+    }
+    .contact-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: royalblue;
+      margin-bottom: 25px;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .info-item {
+      flex: 1 1 250px;
+      background: #e8ebf4;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: inset 0 0 8px rgba(0,0,139,0.1);
+    }
+    .info-item h3 {
+      margin-bottom: 10px;
+      color: royalblue;
+    }
+    form.contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    form label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: royalblue;
+    }
+    form input, form textarea {
+      padding: 10px;
+      border: 2px solid royalblue;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    form textarea {
+      min-height: 120px;
+    }
+    form button {
+      background-color: royalblue;
+      color: white;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #003cb3;
+    }
+    .map-container {
+      margin-top: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      height: 350px;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .contact-info {
+        flex-direction: column;
+      }
+      .info-item {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+    
+
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+
+    <div class="contact-info">
+      <div class="info-item">
+        <h3>Address</h3>
+        <p>1 Henry Williams Road<br>Thaba Tshwane, Pretoria </p>
+      </div>
+      <div class="info-item">
+        <h3>Phone</h3>
+        <a href="tel:+27825960038">Call: +27 82 596 0038</a> <br> or <br>
+            <a href="tel:+27767220200">Call: +27 76 722 0200</a>
+      </div>
+      <div class="info-item">
+        <h3>Email</h3>
+        <p><a href="internationalstjohnsafm@gmail.com">internationalstjohnsafm@gmail.com</a></p>
+      </div>
+    </div>
+
+    <form class="contact-form" action="#" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject of your message" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="map-container">
+      <!-- Replace the src URL with your church's Google Maps embed -->
+      <iframe
+        src="https://www.google.com/maps/@-25.7931827,28.1381129,3a,75y,179.94h,90t/data=!3m7!1e1!3m5!1sRsn6k3m6fp2nLgF-xPiGmQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DRsn6k3m6fp2nLgF-xPiGmQ%26yaw%3D179.94!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+
+</body>
+</html>
+ <script src="script.js"></script>
+>
