@@ -105,80 +105,67 @@ h1 {
 
 /* NEWSLETTER DROPDOWN SECTION */
 
-/* Hide the checkboxes */
-.toggle {
+/* Hide the checkbox inputs */
+input[type="checkbox"] {
   display: none;
 }
 
-/* Style each section as a card */
-section {
-  background: #fff;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* Style the label as clickable header */
+/* Style the labels as clickable headers */
 label {
-  position: relative;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: royalblue;
   cursor: pointer;
-  font-weight: bold;
-  padding: 12px 40px 12px 20px;
-  background: #c19a6b;  /* Gold tone */
-  color: white;
-  border-radius: 8px;
   user-select: none;
-  transition: background 0.3s ease;
+  padding: 10px 15px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
-/* Arrow icon on right side */
+label:hover {
+  background-color: #d0d0d0;
+}
+
+/* Arrow icon on label right side */
 label::after {
   content: "▶";
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: gold;
   transition: transform 0.3s ease;
-  font-size: 1.2rem;
-  color: white;
 }
 
-/* Rotate arrow when checkbox checked */
-.toggle:checked + label::after {
-  transform: translateY(-50%) rotate(90deg);
+/* Rotate arrow when checkbox is checked */
+input[type="checkbox"]:checked + label::after {
+  transform: rotate(90deg);
 }
 
-/* Hover effect on label */
-label:hover {
-  background: #a6784d;
-}
-
-/* Newsletter list is hidden by default */
+/* Hide the newsletter list by default */
 .newsletter-list {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
   padding-left: 20px;
-  background: #f9f9f9;
-  border-left: 4px solid #c19a6b;
-  border-radius: 0 0 8px 8px;
   margin: 0;
+  list-style-type: none;
 }
 
-/* Show the list when checkbox checked */
-.toggle:checked + label + .newsletter-list {
-  max-height: 500px; /* enough height to show all */
-  padding: 10px 20px;
+/* Show the newsletter list when checkbox is checked */
+input[type="checkbox"]:checked + label + .newsletter-list {
+  max-height: 1000px; /* large enough for content */
+  padding: 10px 15px;
 }
 
-/* Remove default ul padding */
+/* Style list items */
 .newsletter-list li {
   margin: 0.5rem 0;
-  list-style: none;
 }
 
-/* Links inside the list */
+/* Style links */
 .newsletter-list a {
   text-decoration: none;
   color: #333;
@@ -186,8 +173,7 @@ label:hover {
   transition: color 0.3s ease;
 }
 
-/* Link hover */
 .newsletter-list a:hover {
-  color: #c19a6b;
+  color: royalblue;
   text-decoration: underline;
 }
