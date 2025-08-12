@@ -394,33 +394,64 @@ input[type="checkbox"]:checked + label::after {
 }
 
 /* Newsletter list styles */
-ul.newsletter-list {
-  margin-top: 15px;
-  padding-left: 20px;
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem 2rem;
+}
+
+/* Each month card */
+section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Month label */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  color: #4b2c82;
+  font-size: 1.1rem;
+}
+
+/* Hide empty input tags */
+input {
+  display: none;
+}
+
+/* Newsletter list styling */
+.newsletter-list {
   list-style: none;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+  padding: 0;
+  margin: 0;
 }
 
-
-
-/* List items */
-ul.newsletter-list li {
-  margin-bottom: 12px;
+.newsletter-list li {
+  margin: 0.4rem 0;
 }
 
-ul.newsletter-list a {
+/* Download links as buttons */
+.newsletter-list a {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  background: #4b2c82;
+  color: #fff;
   text-decoration: none;
-  color: black;
-  font-weight: 600;
-  border-bottom: 1px dotted black;
-  transition: color 0.3s ease, border-bottom-style 0.3s ease;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
 }
 
-ul.newsletter-list a:hover,
-ul.newsletter-list a:focus {
-  color: royalblue;
-  border-bottom-style: solid;
+.newsletter-list a:hover {
+  background: #6741b0;
 }
-
