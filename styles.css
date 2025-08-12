@@ -7,6 +7,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #f5f7fa;
   color: #333;
+  padding: 20px;
 }
 
 /* HEADER LOGOS */
@@ -93,17 +94,27 @@ main {
   background: white;
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding-bottom: 2rem;
 }
 
-/* HEADINGS */
+/* Headings */
 h1 {
   text-align: center;
   color: royalblue;
   margin-bottom: 30px;
-  font-weight: 700;
 }
 
-/* NEWSLETTER DROPDOWN SECTION */
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Newsletter dropdown styles */
 
 /* Hide the checkbox inputs */
 input[type="checkbox"] {
@@ -176,4 +187,18 @@ input[type="checkbox"]:checked + label + .newsletter-list {
 .newsletter-list a:hover {
   color: royalblue;
   text-decoration: underline;
+}
+
+/* Optional section styling */
+section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
