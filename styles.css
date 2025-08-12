@@ -403,10 +403,7 @@ ul.newsletter-list {
   transition: max-height 0.3s ease;
 }
 
-/* Show list when checked */
-input[type="checkbox"]:checked ~ ul.newsletter-list {
-  max-height: 500px; /* enough to show content */
-}
+
 
 /* List items */
 ul.newsletter-list li {
@@ -426,3 +423,4 @@ ul.newsletter-list a:focus {
   color: royalblue;
   border-bottom-style: solid;
 }
+
