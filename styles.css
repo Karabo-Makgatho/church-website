@@ -394,24 +394,7 @@ input[type="checkbox"]:checked + label::after {
 }
 
 /* Newsletter list styles */
-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  padding: 0 1rem 2rem;
-}
-
-/* Each month card */
-section {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1.2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-section:hover {
-  transform: translateY(-4px);
+x);
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
@@ -430,6 +413,64 @@ input {
 }
 
 /* Newsletter list styling */
+/* -------------------
+   NEWSLETTERS SECTION
+------------------- */
+
+/* Page heading for newsletters */
+h1 {
+  text-align: center;
+  color: royalblue;
+  margin: 2rem 0 0.5rem;
+}
+
+p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #555;
+}
+
+/* Responsive grid for month cards */
+.newsletter-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Each month card */
+.newsletter-container section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.newsletter-container section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Month title */
+.newsletter-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  color: #4b2c82;
+  font-size: 1.1rem;
+  cursor: default;
+}
+
+/* Hide the unused input fields */
+.newsletter-container input {
+  display: none;
+}
+
+/* Newsletter list styling */
 .newsletter-list {
   list-style: none;
   padding: 0;
@@ -440,7 +481,7 @@ input {
   margin: 0.4rem 0;
 }
 
-/* Download links as buttons */
+/* Download link buttons */
 .newsletter-list a {
   display: inline-block;
   padding: 0.5rem 0.9rem;
@@ -454,4 +495,96 @@ input {
 
 .newsletter-list a:hover {
   background: #6741b0;
+}/* -------------------
+   NEWSLETTERS SECTION
+------------------- */
+
+/* Page heading for newsletters */
+/* -------------------
+   NEWSLETTERS SECTION (Royal Blue + Gold Theme)
+------------------- */
+
+/* Page heading for newsletters */
+h1 {
+  text-align: center;
+  color: royalblue;
+  margin: 2rem 0 0.5rem;
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #444;
+  font-size: 1rem;
+}
+
+/* Responsive grid for month cards */
+.newsletter-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Each month card */
+.newsletter-container section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-top: 4px solid gold;
+}
+
+.newsletter-container section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Month title */
+.newsletter-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  color: royalblue;
+  font-size: 1.1rem;
+  cursor: default;
+}
+
+/* Hide the unused input fields */
+.newsletter-container input {
+  display: none;
+}
+
+/* Newsletter list styling */
+.newsletter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.newsletter-list li {
+  margin: 0.4rem 0;
+}
+
+/* Download link buttons */
+.newsletter-list a {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  background: royalblue;
+  color: gold;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-list a:hover {
+  background: gold;
+  color: royalblue;
 }
