@@ -392,3 +392,79 @@ label::after {
 input[type="checkbox"]:checked + label::after {
   transform: rotate(90deg);
 }
+/* ====== Newsletter Dropdown Styles ====== */
+.newsletter-section {
+  font-family: 'Poppins', sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.newsletter-section section {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+
+/* Hide the checkbox */
+.newsletter-section input[type="checkbox"] {
+  display: none;
+}
+
+/* Label (acts as the clickable title) */
+.newsletter-section label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #eee;
+  transition: background 0.3s;
+}
+
+.newsletter-section label:hover {
+  background: #ddd;
+}
+
+/* Arrow indicator */
+.newsletter-section label::after {
+  content: "▼";
+  transition: transform 0.3s;
+}
+
+/* Rotate arrow when open */
+.newsletter-section input:checked + label::after {
+  transform: rotate(180deg);
+}
+
+/* Hide list by default */
+.newsletter-section .newsletter-list {
+  max-height: 0;
+  overflow: hidden;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  transition: max-height 0.4s ease-out;
+}
+
+/* Show list when checkbox is checked */
+.newsletter-section input:checked + label + .newsletter-list {
+  max-height: 500px; /* Enough for multiple links */
+  padding: 10px 15px;
+}
+
+/* Newsletter links */
+.newsletter-section .newsletter-list li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.newsletter-section .newsletter-list li a:hover {
+  color: #007BFF;
+}
+
