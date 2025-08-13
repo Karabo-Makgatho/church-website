@@ -468,3 +468,27 @@ input[type="checkbox"]:checked + label::after {
   color: #007BFF;
 }
 
+.month {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .links {
+    display: none;
+    margin-left: 20px;
+  }
+
+  .links a {
+    display: block;
+    margin: 5px 0;
+    color: blue;
+    text-decoration: none;
+  }
+
+  .links a:hover {
+    text-decoration: underline;
+  }
