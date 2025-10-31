@@ -1,129 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="International St John's Apostolic Faith Mission Church Bible Academy and Doctrine Committee." />
-  <meta name="keywords" content="church, bible academy, doctrine, theology, training, study, St John's, Apostolic, South Africa, chaplaincy" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bible Academy - International St John's Apostolic Faith Mission Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="description" content="International St John's Apostolic Faith Mission Church Bible Academy and Doctrine Committee." />
+  <meta name="keywords" content="church, bible academy, doctrine, theology, training, study, St John's, Apostolic, South Africa, chaplaincy" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bible Academy - International St John's Apostolic Faith Mission Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ====================================
+        BASE & GLOBAL STYLES (Reused from Gallery)
+        ==================================== */
+        :root {
+            --primary-color: #004aad; /* Dark Blue */
+            --secondary-color: royalblue; /* Bright Blue */
+            --light-bg: #f4f6f9;
+            --white: white;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding-top: 155px; /* Space for fixed header + navigation */
+            color: var(--text-color);
+        }
+        
+        main {
+            padding: 20px;
+            max-width: 1300px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+
+
+
+        /* ====================================
+        ACADEMY PAGE SPECIFIC STYLES
+        ==================================== */
+        
+        /* Welcome Section Grid Layout */
+        .academy-welcome-section {
+            padding: 20px 0;
+        }
+        
+        .welcome-grid {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-top: 30px;
+            background-color: var(--white);
+            padding: 25px;
+        
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .welcome-text {
+            flex: 2;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .welcome-image {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .welcome-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 40px auto;
+            max-width: 90%;
+        }
+
+        /* Downloads/Resources Section */
+        #academy-downloads {
+            text-align: center;
+        }
+
+        .download-intro {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .resource-list li {
+            margin-bottom: 15px;
+        }
+
+        .resource-list a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-list a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .resource-list .icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        /* Committee Profiles Section */
+        #doctrine-committee {
+            text-align: center;
+        }
+
+        .committee-profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .profile {
+            background-color: var(--white);
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .profile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+
+
+        .profile img {
+            width: 100%;
+            max-width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile h3, .profile h4 {
+            margin: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .profile .title {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+
+        /* ====================================
+        MEDIA QUERIES (Mobile responsiveness)
+        ==================================== */
+        @media (max-width: 900px) {
+            .welcome-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .welcome-image {
+                min-width: 100%;
+                order: -1; /* Place image on top on mobile */
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Adjust padding for smaller header/nav */
+            body { padding-top: 140px; }
+            .nav-wrapper { top: 75px; } /* Adjust nav position */
+            #church-header img { max-height: 60px; }
+        
+
+            .committee-profiles-grid {
+                grid-template-columns: 1fr 1fr; /* 2 profiles per row */
+                gap: 20px;
+            }
+            .profile img {
+                max-width: 100px;
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body { padding-top: 130px; }
+            .nav-wrapper { top: 65px; }
+            #church-header img { max-height: 50px; }
+            h1 { font-size: 2rem; }
+            
+            .committee-profiles-grid {
+                grid-template-columns: 1fr; /* 1 profile per row */
+            }
+        }
+         /* ====================================
+        BASE & GLOBAL STYLES 
+        ==================================== */
+        :root {
+            --primary-color: #004aad; /* Dark Blue */
+            --secondary-color: royalblue; /* Bright Blue */
+            --light-bg: #f4f6f9;
+            --white: white;
+            --text-color: #333;
+            --accent-color: #f7a700; /* Gold/Orange */
+        }
+
+
+
+        /* --- HEADER AND LOGOS --- */
+        #church-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #logo-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        #logo-strip img {
+            max-height: 65px;
+            width: auto;
+            margin: 0 4px;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: block;
+        }
+        
+        #logo-strip img:hover {
+             transform: scale(1.05);
+        }
+        
+        /* Hamburger Icon Styling */
+        #hamburger {
+            padding: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        #hamburger:hover i {
+            color: var(--secondary-color) !important;
+        }
+
+        /* --- SLIDING MENU STYLES --- */
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1050;
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        #mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--primary-color);
+            z-index: 1060;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        #mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+        
+        /* Menu Content Styles */
+        #mobile-menu-panel nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        
+        #mobile-menu-panel a {
+            color: var(--white);
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+        
+    
+
+    </style>
 </head>
 <body>
 
-  <header id="church-header">
-    <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" />
-    <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" />
-    <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" />
-    <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" />
-    <img src="Logos/logo-placeholder-5.jpg" alt="Church logo 5" class="placeholder-logo" />
-    <img src="Logos/logo-placeholder-6.jpg" alt="Church logo 6" class="placeholder-logo" />
-    <img src="Logos/logo-placeholder-7.jpg" alt="Church logo 7" class="placeholder-logo" />
-  </header>
-
-  <div class="nav-wrapper">
-    <div id="hamburger">&#9776;</div>
-    <nav id="tabs-top" class="closed">
-      <a href="index.html">HOME PAGE</a>
-      <a href="mission.html">MISSION & VISION</a>
-      <a href="values.html">OUR CORE VALUES</a>
-      <a href="chaplaincy.html">CHAPLAINCY</a>
-      <a href="events.html">EVENTS</a>
-      <a href="gallery.html">GALLERY</a>
-      <a href="bibleacademy.html">BIBLE ACADEMY</a>
-      <a href="newsletters.html">NEWSLETTERS</a>
-      <a href="contact.html">CONTACT US</a>
-    </nav>
-  </div>
-  
-  <main class="academy-main-content">
-    <h1>International St John's Bible Academy</h1>
-
-    <section class="academy-welcome-section">
-      <h2>Preserving the Principles of Faith</h2>
-      <div class="welcome-grid">
-        <div class="welcome-text">
-            <p>
-                Welcome to the International St John's Apostolic Faith Mission Church **Bible Academy**. We are dedicated to the rigorous study of Scripture and the firm establishment of our Apostolic doctrines.
-            </p>
-            <p>
-                The **Bible Doctrine Committee (BDC)** was established to preserve and secure the principles of our faith and to govern the International Saint John Church body in an orderly manner. The BDC assists the Archbishops and Bishops in areas of faith and morals.
-            </p>
-            <p>
-                The committee collaborates with the Bible Academy through consultation and evaluation, providing expertise and guidance concerning theological, doctrinal, moral, and Bible training issues that confront our Church. We also support efforts in the area of Scripture translations.
-            </p>
-        </div>
-        <div class="welcome-image">
-             <img src="Images/aug25/chaplin.jpg" alt="Chaplaincy/Bible Academy Image" />
-        </div>
-      </div>
-    </section>
+ <body>
     
-    <hr>
-
-    <section id="academy-downloads">
-      <h2>Academy Resources & Enrollment</h2>
-      <p class="download-intro">Download all the official enrollment and doctrinal resources below:</p>
-      <ul class="resource-list">
-        <li>
-          <a href="doc/BIBLE ENROLLMENT FORMS.pdf" target="_blank" download>
-            <span class="icon">📝</span> Bible Academy Enrollment Forms
-          </a>
-        </li>
-        <li>
-          <a href="doc/Bible Doctrine Committee-1.pdf" target="_blank" download>
-            <span class="icon">📘</span> Bible Doctrine Committee Document (BDC)
-          </a>
-        </li>
-        <li>
-          <a href="doc/Bible Certificate GRACE NQELLENG NTSANA.pdf" target="_blank" download>
-            <span class="icon">📄</span> Accreditation & Certificate Information
-          </a>
-        </li>
-      </ul>
-    </section>
+  <header id="church-header">
+    <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
+        <i class="fas fa-bars" style="color: var(--primary-color); font-size: 28px;"></i>
+    </div>
     
-    <hr>
+    <div style="text-align: center;">
+        <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weigh:70></h1>
+    </div>
 
-    <section id="doctrine-committee">
-      <h2>Meet the Bible Doctrine Committee</h2>
-      
-      <div class="committee-profiles-grid">
-        <div class="profile profile-bishop">
-          <img src="profiles/Bishop (1).jpg" alt="Bishop M. Gcebe" />
-          <h3>Bishop M. Gcebe</h3>
-          <p class="title">Archbishop / BDC Head</p>
-        </div>
-        <div class="profile profile-bishop">
-          <img src="profiles/LadyBishop.jpg" alt="LadyBishop (Dr) N. Gcebe" />
-          <h3>LadyBishop (Dr) N. Gcebe</h3>
-          <p class="title">Archbishop / BDC Member</p>
-        </div>
+    <!-- 7 Logos Strip -->
+   <div id="logo-strip">
+        <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L1';" />
+        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L2';" />
+        <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L3';" />
+        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L4';" />
+        <img src="Logos/Chaplainlogo1" alt="Church logo 5" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L5';" />
+        <img src="Logos/Chaplainlogo2" alt="Church logo 6" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L6';" />
+        <img src="Logos/Chaplainlogo3" alt="Church logo 7" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L7';" />
+    </div>
 
-        <div class="profile">
-          <img src="profiles/Rev Lekoape.jpg" alt="Rev. V. Lekoape" />
-          <h4>Rev. V. Lekoape</h4>
-          <p class="title">BDC Member</p>
+ <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
+    
+    <!-- Mobile Menu Panel (Slides from left) -->
+    <div id="mobile-menu-panel">
+        <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
+            <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem></h2>
         </div>
-        <div class="profile">
-          <img src="profiles/LadyRev Lekoape.jpg" alt="Lady Rev. T. Lekoape" />
-          <h4>Lady Rev. T. Lekoape</h4>
-          <p class="title">BDC Member</p>
-        </div>
-        <div class="profile">
-          <img src="profiles/Rev Ntsana.jpg" alt="Rev. M.E. Ntsana" />
-          <h4>Rev. M.E. Ntsana</h4>
-          <p class="title">BDC Member</p>
-        </div>
-        <div class="profile">
-          <img src="profiles/LadyRev Ntsana.jpg" alt="Lady Rev. G.N. Ntsana" />
-          <h4>Lady Rev. G.N. Ntsana</h4>
-          <p class="title">BDC Member</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  
-  <script src="script.js"></script>
+        <nav>
+            <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
+            <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
+            <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
+            <a href="chaplaincy.html"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
+            <a href="events.html" class="active"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
+            <a href="gallery.html"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
+            <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
+            <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
+            <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
+        </nav>
+    </div>
+  </header>
+
+   
+  
+  <main class="academy-main-content">
+    <h1>International St John's Bible Academy</h1>
+
+    <section class="academy-welcome-section">
+      <h2>Preserving the Principles of Faith</h2>
+      <div class="welcome-grid">
+        <div class="welcome-text">
+            <p>
+                Welcome to the International St John's Apostolic Faith Mission Church **Bible Academy**. We are dedicated to the rigorous study of Scripture and the firm establishment of our Apostolic doctrines.
+            </p>
+            <p>
+                The **Bible Doctrine Committee (BDC)** was established to preserve and secure the principles of our faith and to govern the International Saint John Church body in an orderly manner. The BDC assists the Archbishops and Bishops in areas of faith and morals.
+            </p>
+            <p>
+                The committee collaborates with the Bible Academy through consultation and evaluation, providing expertise and guidance concerning theological, doctrinal, moral, and Bible training issues that confront our Church. We also support efforts in the area of Scripture translations.
+            </p>
+        </div>
+        <div class="welcome-image">
+             <img src="Images/aug25/chaplin.jpg" alt="Chaplaincy/Bible Academy Image" onerror="this.onerror=null; this.src='https://placehold.co/250x180/004aad/ffffff?text=Academy+Image';" />
+        </div>
+      </div>
+    </section>
+    
+    <hr>
+
+    <section id="academy-downloads">
+      <h2>Academy Resources & Enrollment</h2>
+      <p class="download-intro">Download all the official enrollment and doctrinal resources below:</p>
+      <ul class="resource-list">
+        <li>
+          <a href="doc/BIBLE ENROLLMENT FORMS.pdf" target="_blank" download>
+            <span class="icon"><i class="fas fa-file-pdf"></i></span> Bible Academy Enrollment Forms
+          </a>
+        </li>
+        <li>
+          <a href="doc/Bible Doctrine Committee-1.pdf" target="_blank" download>
+            <span class="icon"><i class="fas fa-book-open"></i></span> Bible Doctrine Committee Document (BDC)
+          </a>
+        </li>
+        <li>
+          <a href="doc/Bible Certificate GRACE NQELLENG NTSANA.pdf" target="_blank" download>
+            <span class="icon"><i class="fas fa-certificate"></i></span> Accreditation & Certificate Information
+          </a>
+        </li>
+      </ul>
+    </section>
+    
+    <hr>
+
+    <section id="doctrine-committee">
+      <h2>Meet the Bible Doctrine Committee</h2>
+      
+      <div class="committee-profiles-grid">
+        <div class="profile profile-bishop">
+          <img src="profiles/Bishop (1).jpg" alt="Bishop M. Gcebe" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f7a700/ffffff?text=Bishop+M+Gcebe';" />
+          <h3>Bishop M. Gcebe</h3>
+          <p class="title">Archbishop / BDC Head</p>
+        </div>
+        <div class="profile profile-bishop">
+          <img src="profiles/LadyBishop.jpg" alt="LadyBishop (Dr) N. Gcebe" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f7a700/ffffff?text=LadyBishop+N+Gcebe';" />
+          <h3>LadyBishop (Dr) N. Gcebe</h3>
+          <p class="title">Archbishop / BDC Member</p>
+        </div>
+
+        <div class="profile">
+          <img src="profiles/Rev Lekoape.jpg" alt="Rev. V. Lekoape" onerror="this.onerror=null; this.src='https://placehold.co/150x150/004aad/ffffff?text=Rev+Lekoape';" />
+          <h4>Rev. V. Lekoape</h4>
+          <p class="title">BDC Member</p>
+        </div>
+        <div class="profile">
+          <img src="profiles/LadyRev Lekoape.jpg" alt="Lady Rev. T. Lekoape" onerror="this.onerror=null; this.src='https://placehold.co/150x150/004aad/ffffff?text=LadyRev+Lekoape';" />
+          <h4>Lady Rev. T. Lekoape</h4>
+          <p class="title">BDC Member</p>
+        </div>
+        <div class="profile">
+          <img src="profiles/Rev Ntsana.jpg" alt="Rev. M.E. Ntsana" onerror="this.onerror=null; this.src='https://placehold.co/150x150/004aad/ffffff?text=Rev+Ntsana';" />
+          <h4>Rev. M.E. Ntsana</h4>
+          <p class="title">BDC Member</p>
+        </div>
+        <div class="profile">
+          <img src="profiles/LadyRev Ntsana.jpg" alt="Lady Rev. G.N. Ntsana" onerror="this.onerror=null; this.src='https://placehold.co/150x150/004aad/ffffff?text=LadyRev+Ntsana';" />
+          <h4>Lady Rev. G.N. Ntsana</h4>
+          <p class="title">BDC Member</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
+            const hamburger = document.getElementById('hamburger');
+            const menuPanel = document.getElementById('mobile-menu-panel');
+            const overlay = document.getElementById('menu-overlay');
+            const menuLinks = menuPanel.querySelectorAll('a');
+
+            const toggleMenu = () => {
+                const isOpen = menuPanel.classList.contains('open');
+                if (isOpen) {
+                    menuPanel.classList.remove('open');
+                    // Delay hiding overlay to allow CSS transition to finish
+                    setTimeout(() => overlay.style.display = 'none', 300);
+                    hamburger.setAttribute('aria-expanded', 'false');
+                } else {
+                    overlay.style.display = 'block';
+                    // Delay opening panel slightly after showing overlay
+                    setTimeout(() => menuPanel.classList.add('open'), 10);
+                    hamburger.setAttribute('aria-expanded', 'true');
+                }
+            };
+
+            if (hamburger && menuPanel) {
+                hamburger.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', toggleMenu); 
+                
+                // Close menu when a link is clicked
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+            
+            
+    
+    }); // <-- Added missing closure for DOMContentLoaded
+    </script>
 </body>
 </html>
