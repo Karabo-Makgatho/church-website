@@ -1,130 +1,583 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.chaplaincy-content {
+
+    max-width: 900px;
+
+    margin: 20px auto 50px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  line-height: 1.6;
-  color: #222;
-  background: #fff;
+
+
+.chaplaincy-content h2 {
+
+    color: royalblue;
+
+    font-size: 1.6rem;
+
+    margin-top: 30px;
+
+    border-left: 5px solid royalblue;
+
+    padding-left: 15px;
+
+    margin-bottom: 15px;
+
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #004aad;
-  color: white;
-  padding: 15px 25px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+
+
+.chaplaincy-content p {
+
+    font-size: 1.05rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
+
+
+.chaplaincy-image-section {
+
+    text-align: center;
+
+    margin: 30px 0;
+
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+
+
+.chaplaincy-image-section img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
+
+
+.service-list {
+
+    list-style-type: none;
+
+    padding: 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr; /* Two columns */
+
+    gap: 15px;
+
+    margin-top: 20px;
+
 }
 
-.nav-links a:hover {
-  color: #ffd700;
+
+
+.service-list li {
+
+    background: #f0f4ff;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    border-left: 5px solid royalblue;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
 }
 
-/* Hamburger menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
+
+
+/* Responsive adjustment for chaplaincy services */
+
+@media (max-width: 600px) {
+
+    .chaplaincy-content {
+
+        padding: 20px;
+
+    }
+
+    .service-list {
+
+        grid-template-columns: 1fr; /* Stack on small screens */
+
+    }
+
 }
 
-.hamburger span {
-  background: white;
-  height: 3px;
-  width: 25px;
-  border-radius: 5px;
-  transition: 0.3s;
+
+
+
+
+/* ====================================
+
+   EVENTS PAGE STYLING
+
+   ==================================== */
+
+
+
+.events-container {
+
+    max-width: 900px;
+
+    margin: 20px auto 50px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
 }
 
-/* Hero */
-.hero {
-  background: url("images/hero-bg.jpg") center/cover no-repeat;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
+
+
+.events-container p.intro {
+
+    text-align: center;
+
+    font-size: 1.1rem;
+
+    color: #555;
+
+    margin-bottom: 30px;
+
 }
 
-.hero-content {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 700px;
+
+
+.event-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    transition: box-shadow 0.3s;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
 }
 
-.hero h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+
+
+.event-card:hover {
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
 }
 
-.hero p {
-  margin-bottom: 15px;
-  font-size: 1rem;
+
+
+.event-header {
+
+    background-color: royalblue;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #ffd700;
-  color: #004aad;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
+
+
+.event-header h3 {
+
+    margin: 0;
+
+    font-size: 1.4rem;
+
 }
 
-/* Gallery */
-.gallery-section {
-  padding: 50px 20px;
-  text-align: center;
-  background: #f7f7f7;
+
+
+.event-date {
+
+    font-weight: 700;
+
+    font-size: 1.1rem;
+
 }
 
-.gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
+
+
+.event-details {
+
+    padding: 20px;
+
+    display: flex;
+
+    gap: 20px;
+
 }
 
-.gallery-container img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s;
+
+
+.event-details img {
+
+    flex-shrink: 0;
+
+    width: 150px;
+
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+
 }
 
-.gallery-container img:hover {
-  transform: scale(1.05);
+
+
+.event-info {
+
+    flex-grow: 1;
+
 }
 
-/* Events */
-.even
+
+
+.event-info p {
+
+    margin: 5px 0;
+
+    line-height: 1.5;
+
+}
+
+
+
+.event-location, .event-time {
+
+    font-weight: 600;
+
+    color: #004aad;
+
+}
+
+
+
+.event-button {
+
+    display: inline-block;
+
+    background-color: #004aad;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    margin-top: 10px;
+
+    transition: background-color 0.3s;
+
+}
+
+
+
+.event-button:hover {
+
+    background-color: darkblue;
+
+}
+
+
+
+/* Responsive adjustments for events */
+
+@media (max-width: 600px) {
+
+    .events-container {
+
+        padding: 15px;
+
+    }
+
+    .event-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 10px;
+
+    }
+
+    .event-header h3, .event-date {
+
+        margin-bottom: 5px;
+
+    }
+
+    .event-details {
+
+        flex-direction: column;
+
+        padding: 15px;
+
+    }
+
+    .event-details img {
+
+        width: 100%;
+
+        height: auto;
+
+    }
+
+}
+
+
+
+
+
+/* ====================================
+
+   CORE VALUES PAGE STYLING
+
+   ==================================== */
+
+
+
+.values-content {
+
+    max-width: 900px;
+
+    margin: 20px auto 50px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
+}
+
+
+
+.values-content h1 {
+
+    text-align: center;
+
+    color: #004aad;
+
+    font-size: 2.2rem;
+
+    margin-bottom: 20px;
+
+    border-bottom: 3px solid royalblue;
+
+    padding-bottom: 10px;
+
+}
+
+
+
+.value-statement p {
+
+    text-align: center;
+
+    font-size: 1.1rem;
+
+    color: #555;
+
+    margin-bottom: 40px;
+
+}
+
+
+
+/* Grid Layout for Core Values */
+
+.core-values-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+
+    gap: 30px; 
+
+}
+
+
+
+.value-item {
+
+    padding: 20px;
+
+    border: 1px solid #eee;
+
+    border-left: 5px solid royalblue; 
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    transition: box-shadow 0.3s;
+
+}
+
+
+
+.value-item:hover {
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+
+}
+
+
+
+.value-item h2 {
+
+    color: royalblue;
+
+    font-size: 1.4rem;
+
+    margin-top: 0;
+
+    margin-bottom: 10px;
+
+    font-weight: 700;
+
+}
+
+
+
+.value-item p {
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* Style to hide the old image placeholder */
+
+.original-image-placeholder {
+
+    display: none; 
+
+}
+
+
+
+/* Responsive adjustments for core values */
+
+@media (max-width: 768px) {
+
+    .core-values-grid {
+
+        grid-template-columns: 1fr; 
+
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .values-content {
+
+        padding: 20px;
+
+    }
+
+    .values-content h1 {
+
+        font-size: 1.8rem;
+
+    }
+
+}
+
+
+
+
+
+/* ====================================
+
+   MISSION & VISION PAGE STYLING
+
+   ==================================== */
+.mission-vision-content {
+
+    max-width: 900px;
+
+    margin: 20px auto 50px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+text-align: center;
+}
+
+/* Responsive adjustments for mission/vision */
+
+@media (max-width: 600px) {
+
+    .mission-vision-content {
+
+        padding: 20px;
+
+    }
+
+    .mission-vision-content h1 {
+
+        font-size: 1.8rem;
+
+    }
+
+}
+
+
+
