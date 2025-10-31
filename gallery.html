@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Welcome to International St John's Apostolic Faith Mission Church Events." />
-  <meta name="keywords" content="church, faith, mission, gospel, worship, bible, events, St John's, Apostolic, South Africa, chaplaincy" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Events - International St John's Apostolic Faith Mission Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="description" content="View the photo gallery of events and ministries at International St John's Apostolic Faith Mission Church." />
+    <meta name="keywords" content="church, faith, mission, gospel, worship, bible, St John's, Apostolic, South Africa, photos, gallery" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gallery - International St John's Apostolic Faith Mission Church</title>
+    
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         /* ====================================
-        BASE & GLOBAL STYLES 
+        BASE & GLOBAL STYLES (Includes Unified Header) 
         ==================================== */
         :root {
             --primary-color: #004aad; /* Dark Blue */
@@ -30,13 +33,14 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-bg);
             margin: 0;
-            padding-top: 85px; /* Space for fixed header only */
+            padding-top: 85px; /* Space for fixed header */
             color: var(--text-color);
         }
         
         main {
             padding: 20px;
-            max-width: 1200px;
+            /* Allow main content to be very wide */
+            max-width: 1400px;
             margin: 20px auto;
         }
 
@@ -44,13 +48,13 @@
             text-align: center;
             color: var(--primary-color);
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             border-bottom: 3px solid var(--secondary-color);
             padding-bottom: 10px;
             font-weight: 700;
         }
 
-        /* --- HEADER AND LOGOS --- */
+        /* --- HEADER AND LOGOS (Unified Style) --- */
         #church-header {
             display: flex;
             justify-content: space-between;
@@ -84,10 +88,9 @@
         }
         
         #logo-strip img:hover {
-             transform: scale(1.05);
+            transform: scale(1.05);
         }
         
-        /* Hamburger Icon Styling */
         #hamburger {
             padding: 5px;
             cursor: pointer;
@@ -98,7 +101,7 @@
             color: var(--secondary-color) !important;
         }
 
-        /* --- SLIDING MENU STYLES --- */
+        /* --- SLIDING MENU STYLES (Unified Style) --- */
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -130,7 +133,6 @@
             transform: translateX(0);
         }
         
-        /* Menu Content Styles */
         #mobile-menu-panel nav {
             display: flex;
             flex-direction: column;
@@ -154,110 +156,54 @@
             color: var(--white);
         }
         
-        /* --- EVENTS SPECIFIC STYLES --- */
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin-bottom: 30px;
+        /* ====================================
+        GALLERY PAGE STYLING (Fixed for full width)
+        ==================================== */
+
+        #gallery-container {
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid {
+            /* Use a flexible grid that automatically adjusts columns */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: var(--white);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        .slideshow-container img {
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
             width: 100%;
-            height: 400px;
+            height: 250px; /* Fixed height for uniformity */
             object-fit: cover;
-            display: none;
-            transition: opacity 1s;
-        }
-        .slideshow-container img.active {
             display: block;
+            transition: opacity 0.3s;
         }
 
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
+        .gallery-item:hover img {
+            opacity: 0.9;
+        }
+
+        .caption {
             padding: 15px;
             text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .month {
-            margin-bottom: 20px;
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .accordion {
-            background-color: var(--primary-color);
-            color: white;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 1.2rem;
-            transition: background-color 0.3s;
-            font-weight: 600;
-        }
-
-        .accordion:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .accordion::before {
-            content: '\2b'; /* Plus sign */
-            margin-right: 15px;
-            color: var(--accent-color);
-            font-weight: 700;
-        }
-
-        .accordion.active::before {
-            content: '\2212'; /* Minus sign */
-        }
-
-
-        .panel {
-            padding: 0 18px;
-            background-color: white;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-        }
-        
-        .panel h3 {
-            color: var(--primary-color);
-            margin-top: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .event-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            padding: 10px 0 20px 0;
-        }
-
-        .event-gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-        
-        .event-gallery img:hover {
-            transform: scale(1.05);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-color);
         }
 
         /* ====================================
@@ -272,183 +218,292 @@
             #logo-strip {
                 display: none;
             }
-            #church-header h1 {
+            /* Show title on mobile for better context */
+            #church-header .header-title {
+                display: block;
                 font-size: 1.1rem;
                 flex-grow: 1;
                 text-align: center;
                 margin-left: 10px;
             }
-            .slideshow-container img {
-                height: 250px;
+            
+            .gallery-grid {
+                /* On small screens, keep it to one or two columns max */
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            }
+            .gallery-item img {
+                 height: 200px;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
 <body>
     
-  <header id="church-header">
-    <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
-        <i class="fas fa-bars" style="color: var(--primary-color); font-size: 28px;"></i>
-    </div>
-    
-    <div style="text-align: center;">
-        <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weight: 700;></h1>
-    </div>
-
-    <!-- 7 Logos Strip -->
-   <div id="logo-strip">
-        <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L1';" />
-        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L2';" />
-        <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L3';" />
-        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L4';" />
-        <img src="Logos/Chaplainlogo1" alt="Church logo 5" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L5';" />
-        <img src="Logos/Chaplainlogo2" alt="Church logo 6" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L6';" />
-        <img src="Logos/Chaplainlogo3" alt="Church logo 7" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L7';" />
-    </div>
-
- <!-- Mobile Menu Overlay -->
-    <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
-    
-    <!-- Mobile Menu Panel (Slides from left) -->
-    <div id="mobile-menu-panel">
-        <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
-            <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem;></h2>
+    <header id="church-header">
+        <!-- Hamburger Icon for Menu -->
+        <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
+            <i class="fas fa-bars" style="color: var(--primary-color); font-size: 28px;"></i>
         </div>
-        <nav>
-            <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
-            <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
-            <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
-            <a href="chaplaincy.html"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
-            <a href="events.html" class="active"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
-            <a href="gallery.html"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
-            <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
-            <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
-            <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
-        </nav>
-    </div>
-  </header>
+        
+        <!-- Church Title (Visible on Mobile) -->
+        <div class="header-title" style="text-align: center; display: none;">
+            <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weight: 700;">International St John's Apostolic Faith Mission Church</h1>
+        </div>
 
-   
+        <!-- 7 Logos Strip (Hidden on Mobile) -->
+        <div id="logo-strip">
+            <!-- Placeholder images with onerror for stability -->
+            <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L1';" />
+            <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L2';" />
+            <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L3';" />
+            <img src="Logos/IMG-20250617_100228_034.jpg" alt="Church logo 4" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L4';" />
+            <img src="Logos/Chaplainlogo1" alt="Church logo 5" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L5';" />
+            <img src="Logos/Chaplainlogo2" alt="Church logo 6" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L6';" />
+            <img src="Logos/Chaplainlogo3" alt="Church logo 7" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L7';" />
+        </div>
 
-<main class="main-gallery">
-    <h1>Photo Gallery</h1>
-    
-    <p class="gallery-intro">A visual history of our ministry, showing moments from services, ordinations, conferences, and community outreach.</p>
+        <!-- Mobile Menu Overlay -->
+        <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
+        
+        <!-- Mobile Menu Panel (Slides from left) -->
+        <div id="mobile-menu-panel">
+            <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
+                <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem;">Navigation Menu</h2> 
+            </div>
+            <nav>
+                <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
+                <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
+                <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
+                <a href="chaplaincy.html"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
+                <a href="events.html"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
+                <a href="gallery.html" class="active"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
+                <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
+                <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
+                <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="image-gallery-grid">
-      <img src="Images/aug25/bomama1.jpg" alt="Church women's group" />
-      <img src="Images/aug25/bomama2.jpg" alt="Church women's group" />
-      <img src="Images/aug25/e1.jpg" alt="Ordination ceremony" />
-      <img src="Images/aug25/e4.jpg" alt="Group photo" />
-      <img src="Images/aug25/e3.jpg" alt="Group photo" />
-      <img src="Images/aug25/e6.jpg" alt="Evangelist Sibisi Appointment" />
-      <img src="Images/aug25/e7.jpg" alt="Evangelist Appointment" />
-      <img src="Images/aug25/o2.jpg" alt="Lady Reverend Appointment" />
-      <img src="Images/aug25/o8.jpg" alt="Lady Reverend Appointment" />
-      <img src="Images/aug25/o10.jpg" alt="Lady Reverend Appointment" />
-      <img src="Images/aug25/onb.jpg" alt="Lady Bishop" />
-      <img src="Images/aug25/o9.jpg" alt="Lady Reverend Appointment" />
-      <img src="Images/aug25/o5.jpg" alt="Lady Reverend Appointment" />
-      <img src="Images/aug25/w2.jpg" alt="Women's Conference" />
-      <img src="Images/aug25/A2.jpg" alt="Chaplaincy event" />
-      <img src="Images/aug25/A3.jpg" alt="Chaplaincy event" />
-      <img src="Images/IMG-20250616-WA0059.jpg" alt="Church members" />
-      <img src="Logos/Church board.jpg" alt="Church Board" />
-      <img src="Events/youthday2.jpg" alt="Youth Day" />
-      <img src="Images/IMG-20250616-WA0002.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0003.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0004.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0005.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0006.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0007.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0008.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0009.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0010.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0011.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0039.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0013.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0027.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0045.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0018.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0030.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0016.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0001.jpg" alt="Church members" />
-      <img src="Images/IMG-20250616-WA0069.jpg" alt="Church members" />
-    </div>
+    <main>
+        <h1>Ministry Photo Gallery</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 1.1rem;">
+            A visual journey through the life, events, and ministries of the International St John's Apostolic Faith Mission Church.
+        </p>
 
-  </main>
-  <script>
+        <div id="gallery-container">
+            <div class="gallery-grid">
+                
+                <!-- Explicit List of Images Provided by User -->
+                
+                <!-- From the first request -->
+                <div class="gallery-item">
+                    <img src="Images/aug25/bomama1.jpg" alt="Church women's group" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Women+Group+1';" />
+                    <div class="caption">Women's Group Fellowship (1)</div>
+                </div>
+                
+                <!-- From the second request list -->
+                <div class="gallery-item">
+                    <img src="Images/aug25/bomama2.jpg" alt="Church women's group" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Women+Group+2';" />
+                    <div class="caption">Women's Group Fellowship (2)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/e1.jpg" alt="Ordination ceremony" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Ordination+1';" />
+                    <div class="caption">Formal Ordination Ceremony</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/e4.jpg" alt="Group photo" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Group+Photo+1';" />
+                    <div class="caption">Ministry Team Group Photo</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/e3.jpg" alt="Group photo" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Group+Photo+2';" />
+                    <div class="caption">Congregation Gathering</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/e6.jpg" alt="Evangelist Sibisi Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Evangelist+Sibisi';" />
+                    <div class="caption">Evangelist Sibisi's Appointment</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/e7.jpg" alt="Evangelist Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Evangelist+2';" />
+                    <div class="caption">New Evangelist Dedication</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/o2.jpg" alt="Lady Reverend Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Lady+Rev+1';" />
+                    <div class="caption">Lady Reverend Appointment (1)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/o8.jpg" alt="Lady Reverend Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Lady+Rev+2';" />
+                    <div class="caption">Lady Reverend Appointment (2)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/o10.jpg" alt="Lady Reverend Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Lady+Rev+3';" />
+                    <div class="caption">Lady Reverend Appointment (3)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/onb.jpg" alt="Lady Bishop" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Lady+Bishop';" />
+                    <div class="caption">Installation of Lady Bishop</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/o9.jpg" alt="Lady Reverend Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Lady+Rev+4';" />
+                    <div class="caption">Reverend's Dedication</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/o5.jpg" alt="Lady Reverend Appointment" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Lady+Rev+5';" />
+                    <div class="caption">Joyful Service and Leadership</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/w2.jpg" alt="Women's Conference" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Women's+Conference';" />
+                    <div class="caption">Annual Women's Conference</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/A2.jpg" alt="Chaplaincy event" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Chaplaincy+1';" />
+                    <div class="caption">Chaplaincy Outreach Event (1)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/aug25/A3.jpg" alt="Chaplaincy event" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Chaplaincy+2';" />
+                    <div class="caption">Chaplaincy Outreach Event (2)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0059.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+1';" />
+                    <div class="caption">Congregation Gathering</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Logos/Church board.jpg" alt="Church Board" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Board';" />
+                    <div class="caption">Church Board Meeting</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Events/youthday2.jpg" alt="Youth Day" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Youth+Day';" />
+                    <div class="caption">Youth Day Celebration</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0002.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+2';" />
+                    <div class="caption">Service Participants</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0003.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+3';" />
+                    <div class="caption">Community Members in Attendance</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0004.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+4';" />
+                    <div class="caption">Group Fellowship</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0005.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+5';" />
+                    <div class="caption">Gathered for Worship</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0006.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+6';" />
+                    <div class="caption">Smiling Faces</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0007.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+7';" />
+                    <div class="caption">Joyful Hearts</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0008.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+8';" />
+                    <div class="caption">Church Family</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0009.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+9';" />
+                    <div class="caption">Candid Moments</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0010.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+10';" />
+                    <div class="caption">Fellowship Time</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0011.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+11';" />
+                    <div class="caption">Blessed Community</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0039.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+12';" />
+                    <div class="caption">Church Members (12)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0013.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+13';" />
+                    <div class="caption">Congregation Portrait</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0027.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+14';" />
+                    <div class="caption">United in Faith</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0045.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+15';" />
+                    <div class="caption">Church Leaders</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0018.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+16';" />
+                    <div class="caption">Warm Welcomes</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0030.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+17';" />
+                    <div class="caption">Spiritual Gathering</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0016.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+18';" />
+                    <div class="caption">Moments of Reflection</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0001.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+19';" />
+                    <div class="caption">Community Love</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Images/IMG-20250616-WA0069.jpg" alt="Church members" onerror="this.onerror=null; this.src='https://placehold.co/600x400/004aad/ffffff?text=Members+20';" />
+                    <div class="caption">Brotherhood & Sisterhood</div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Ensure all JavaScript code is executed after the DOM is fully loaded.
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
             const hamburger = document.getElementById('hamburger');
             const menuPanel = document.getElementById('mobile-menu-panel');
             const overlay = document.getElementById('menu-overlay');
-            const menuLinks = menuPanel.querySelectorAll('a');
 
+            // Function to handle opening and closing the mobile menu
             const toggleMenu = () => {
                 const isOpen = menuPanel.classList.contains('open');
                 if (isOpen) {
                     menuPanel.classList.remove('open');
-                    // Delay hiding overlay to allow CSS transition to finish
-                    setTimeout(() => overlay.style.display = 'none', 300);
+                    // Hide overlay after transition
+                    setTimeout(() => { overlay.style.display = 'none'; }, 300);
+                    document.body.style.overflow = ''; 
                     hamburger.setAttribute('aria-expanded', 'false');
                 } else {
                     overlay.style.display = 'block';
-                    // Delay opening panel slightly after showing overlay
-                    setTimeout(() => menuPanel.classList.add('open'), 10);
+                    // Show panel slightly after showing overlay
+                    setTimeout(() => { menuPanel.classList.add('open'); }, 10);
+                    document.body.style.overflow = 'hidden';
                     hamburger.setAttribute('aria-expanded', 'true');
                 }
             };
 
-            if (hamburger && menuPanel) {
+            // Setup event listeners if all elements are found
+            if (hamburger && menuPanel && overlay) {
+                const menuLinks = menuPanel.querySelectorAll('a'); 
+                
                 hamburger.addEventListener('click', toggleMenu);
                 overlay.addEventListener('click', toggleMenu); 
                 
-                // Close menu when a link is clicked
+                // Close menu when a navigation link is clicked
                 menuLinks.forEach(link => {
-                    link.addEventListener('click', toggleMenu);
+                    link.addEventListener('click', () => {
+                        // Only toggle if the link is not already the active page
+                        if (!link.classList.contains('active')) {
+                            toggleMenu();
+                        }
+                    });
                 });
-            }
-            
-            // --- Accordion Logic ---
-            var acc = document.getElementsByClassName("accordion");
-            for (let i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    } 
-                });
-            }
-            
-            // --- Slideshow Logic ---
-            let slideIndex = 0;
-            const slides = document.querySelectorAll('.slideshow-container .slide');
-
-            function showSlides() {
-                for (let i = 0; i < slides.length; i++) {
-                    slides[i].classList.remove('active');
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) {slideIndex = 1}    
-                slides[slideIndex-1].classList.add('active');
-                setTimeout(showSlides, 4000); // Change image every 4 seconds
-            }
-            
-            if (slides.length > 0) {
-                showSlides();
             }
         });
     </script>
 </body>
-
-
-
-
-  
-
 </html>
-
