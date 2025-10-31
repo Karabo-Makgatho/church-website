@@ -235,7 +235,7 @@
     <h1>MISSION & VISION</h1>
     
     <!-- REVERTED: Now displays only the main image, styled by styles.css -->
-    <div id="mission-image-container">
+    <div id="original-image-placeholder">
         <!-- Ensure this image path is correct -->
         <img src="Logos/Screenshot_20250620-084507.jpg" alt="Mission and Vision Statement Image" />
     </div>
@@ -244,7 +244,8 @@
   </main>
 
   <script>
-        // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
             const hamburger = document.getElementById('hamburger');
             const menuPanel = document.getElementById('mobile-menu-panel');
             const overlay = document.getElementById('menu-overlay');
@@ -279,6 +280,7 @@
   </script>
 </body>
 </html>
+
 
 
 
