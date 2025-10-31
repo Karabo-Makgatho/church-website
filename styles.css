@@ -1,494 +1,1067 @@
-/* Reset & base */
-* {
-  box-sizing: border-box;
-}
+/* ====================================
+   BASE & GLOBAL STYLES (Applies to all pages)
+   ==================================== */
+
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f5f7fa;
-  color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9; /* Light background for the overall site */
+    margin: 0;
+    padding-top: 100px; /* Space for the fixed header/nav */
+    color: #333;
 }
 
-/* HEADER LOGOS */
+/* --- HEADER AND LOGOS --- */
 #church-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  padding: 15px 10px;
-  gap: 10px;
-  position: sticky;
-  top: 0;
-  z-index: 1002;
-  border-bottom: 2px solid #004aad; /* dark thin blue line */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 5px solid royalblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
+
 #church-header img {
-  max-height: 120px;
-  width: auto;
-  max-width: 150px;
-  object-fit: contain;
+    max-height: 70px; /* Standard size for all logos */
+    width: auto;
+    margin: 0 5px;
+    object-fit: contain;
 }
 
-/* HAMBURGER - always visible, fixed position */
-#hamburger {
-  position: fixed;
-  top: 100px;
-  left: 15px;
-  font-size: 32px;
-  color: white;
-  background: royalblue;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1100;
-  user-select: none;
+/* Hide placeholder logos until needed, but they maintain structure */
+.placeholder-logo {
+    display: none; 
 }
 
-/* NAVIGATION MENU - hidden off-screen initially */
+/* --- NAVIGATION BAR --- */
+.nav-wrapper {
+    position: fixed;
+    top: 85px; /* Adjust based on header height (70px + border/padding) */
+    left: 0;
+    width: 100%;
+    background-color: #004aad; /* Dark blue background */
+    z-index: 999;
+}
+
 #tabs-top {
-  position: fixed;
-  top: 135px; /* height of header logos */
-  left: -260px; /* hidden left offscreen */
-  width: 250px;
-  height: calc(100% - 135px);
-  background-color: royalblue;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 20px;
-  transition: left 0.3s ease;
-  overflow-y: auto;
-  box-shadow: 3px 0 6px rgba(0,0,0,0.3);
-  z-index: 1050;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
 }
 
-/* When open, slide in */
-#tabs-top.open {
-  left: 0;
-}
-
-/* Navigation links styling */
 #tabs-top a {
-  display: block;
-  padding: 12px 15px;
-  font-size: 1.1rem;
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-  white-space: normal;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+    border-radius: 4px;
 }
 
 #tabs-top a:hover {
-  background-color: #003cb3;
+    background-color: royalblue;
 }
 
-/* SLIDESHOW CONTAINER */
-.slideshow-container {
-  position: relative;
-  max-width: 900px;
-  margin: 20px auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  background: white;
-}
-
-/* Slides */
-.slide {
-  display: none;
-  width: 100%;
-  height: 450px;
-  object-fit: cover;
-  user-select: none;
-  transition: opacity 0.5s ease-in-out;
-}
-.slide.active {
-  display: block;
-  animation: fadein 1s ease;
-}
-
-@keyframes fadein {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* Slide caption */
-.slide-caption {
-  position: absolute;
-  bottom: 15px;
-  left: 20px;
-  color: white;
-  font-size: 1.5rem;
-  background: rgba(0, 0, 50, 0.6);
-  padding: 8px 15px;
-  border-radius: 6px;
-  max-width: 80%;
-  user-select: none;
-  font-weight: 700;
-  text-shadow: 0 0 5px black;
-}
-
-/* MAIN CONTENT */
-main {
-  max-width: 900px;
-  margin: 20px auto 50px;
-  padding: 25px 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-main h2 {
-  text-align: center;
-  margin-bottom: 15px;
-  font-weight: 700;
-  color: royalblue;
-}
-
-main p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-/* LEADERS CONTAINER */
-.leaders-container {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 40px;
-}
-.leader {
-  flex: 1 1 300px;
-  max-width: 400px;
-  text-align: center;
-}
-.leader img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-.leader p {
-  margin-top: 10px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: royalblue;
-}
-
-/*events page*\
-/* events.css */
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f5f7fa;
-  color: #333;
-  margin: 0;
-  padding: 20px;
-}
-
-main {
-  max-width: 900px;
-  margin: auto;
-}
-
-h1 {
-  text-align: center;
-  color: royalblue;
-  margin-bottom: 30px;
-}
-
-.accordion {
-  background-color: royalblue;
-  color: white;
-  cursor: pointer;
-  padding: 15px 20px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  font-size: 1.25rem;
-  font-weight: 700;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.accordion:hover,
-.accordion.active {
-  background-color: #003cb3;
-}
-
-.panel {
-  padding: 0 20px 20px 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-  background-color: white;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-}
-
-.panel h3 {
-  color: royalblue;
-  margin-top: 15px;
-}
-
-.panel img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin: 10px 10px 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  object-fit: cover;
-  display: inline-block;
-}
-/* MISSION SECTION */
-#mission {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-}
-
-#mission img {
-    max-width: 90%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    margin-top: 20px;
-}
-
-/* CORE VALUES SECTION */
-.core-values {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.core-values img {
-    max-width: 90%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    margin-top: 20px;
-}
-
-/* GALLERY */
-.image-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.image-gallery img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.image-gallery img:hover {
-  transform: scale(1.05);
-}
-
-
-/*bible academy*/
-.pdf-list {
-  list-style: none;
-  padding-left: 0;
-  text-align: center;
-}
-
-.pdf-list li {
-  margin: 10px 0;
-}
-
-.pdf-list a {
-  text-decoration: none;
-  color: #0077cc;
-  font-weight: bold;
-}
-
-.pdf-list a:hover {
-  text-decoration: underline;
-}
-
-#doctrine-committee .pyramid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.row {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.profile {
-  text-align: center;
-}
-
-.profile img {
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10%;
-  border: 3px solid #0077cc;
-}
-
-.profile h3, .profile h4 {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-
-
-/* Label as clickable header */
-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: royalblue;
-  cursor: pointer;
-  user-select: none;
-  padding: 5px 0;
-  transition: color 0.3s ease;
-}
-
-label:hover {
-  color: royalblue;
-}
-
-/* Arrow icon */
-label::after {
-  content: "▶";
-  font-size: 1.25rem;
-  transition: transform 0.3s ease;
-  color: gold;
-}
-
-/* Rotate arrow when checked */
-input[type="checkbox"]:checked + label::after {
-  transform: rotate(90deg);
-}
-/* ====== Newsletter Dropdown Styles ====== */
-.newsletter-section {
-  font-family: 'Poppins', sans-serif;
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-.newsletter-section section {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  background: #f9f9f9;
-}
-
-/* Hide the checkbox */
-.newsletter-section input[type="checkbox"] {
-  display: none;
-}
-
-/* Label (acts as the clickable title) */
-.newsletter-section label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 15px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #eee;
-  transition: background 0.3s;
-}
-
-.newsletter-section label:hover {
-  background: #ddd;
-}
-
-/* Arrow indicator */
-.newsletter-section label::after {
-  content: "▼";
-  transition: transform 0.3s;
-}
-
-/* Rotate arrow when open */
-.newsletter-section input:checked + label::after {
-  transform: rotate(180deg);
-}
-
-/* Hide list by default */
-.newsletter-section .newsletter-list {
-  max-height: 0;
-  overflow: hidden;
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  transition: max-height 0.4s ease-out;
-}
-
-/* Show list when checkbox is checked */
-.newsletter-section input:checked + label + .newsletter-list {
-  max-height: 500px; /* Enough for multiple links */
-  padding: 10px 15px;
-}
-
-/* Newsletter links */
-.newsletter-section .newsletter-list li a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.newsletter-section .newsletter-list li a:hover {
-  color: #007BFF;
-}
-
-.month {
+/* Hamburger menu button (initially hidden on desktop) */
+#hamburger {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 20px;
     cursor: pointer;
-    font-weight: bold;
-    margin: 10px 0;
+    text-align: right;
+}
+
+/* Active Page Style (to be set manually in HTML for now) */
+#tabs-top a[href="current-page.html"] {
+    background-color: royalblue;
+}
+
+/* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
+main {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+/* Global Heading Style (Replaces old h3 strong tag) */
+h1 {
+    text-align: center;
+    color: #004aad;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid royalblue;
+    padding-bottom: 10px;
+}
+
+/* --- MEDIA QUERIES for Tablet and Mobile --- */
+@media (max-width: 1024px) {
+    #church-header img {
+        max-height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Adjust header for less horizontal space */
+    #church-header img {
+        max-height: 50px;
+        margin: 0 2px;
+    }
+    
+    /* Show hamburger and hide nav links */
+    #hamburger {
+        display: block;
+        text-align: left;
+        padding: 10px 20px;
+    }
+
+    #tabs-top {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        position: absolute;
+        top: 100%; /* Position below the hamburger line */
+        width: 100%;
+        background-color: #004aad;
+        max-height: 0; /* Hidden state */
+    }
+
+    #tabs-top a {
+        padding: 12px 20px;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Menu Open State controlled by JavaScript */
+    #tabs-top.closed {
+        max-height: 0;
+    }
+    #tabs-top.open {
+        max-height: 500px; /* Large enough value to show all links */
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    body {
+        padding-top: 130px; /* Increase top padding for fixed header + nav wrapper */
+    }
+    .nav-wrapper {
+        top: 65px; /* Adjust position relative to header */
+    }
+
+    /* Show only essential logos on small screen */
+    #church-header img:nth-child(n+3) { /* Hide logo 3 and onwards */
+        display: none;
+    }
+    #church-header {
+        justify-content: space-between;
+        padding: 5px 10px;
+    }
+}
+
+
+/* ====================================
+   HOMEPAGE SPECIFIC STYLING
+   ==================================== */
+
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 500px; /* Define a fixed height for the container */
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the container */
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Welcome Section */
+#welcome-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#welcome-section h2 {
+    color: royalblue;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+#welcome-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Quick Links/Cards Section */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none; /* Make card look like a button/link */
+    color: #333;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+    background-color: royalblue;
+    color: white;
+    padding: 20px 0;
+    font-size: 2rem;
+}
+
+.card-content {
+    padding: 20px 15px;
+}
+
+.card-content h3 {
+    color: #004aad;
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Media query for homepage slideshow */
+@media (max-width: 768px) {
+    .slideshow-container {
+        height: 300px; /* Shorter height on mobile */
+    }
+    .slide-caption {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    #welcome-section {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .card-grid {
+        gap: 20px;
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ====================================
+   CHAPLAINCY PAGE STYLING
+   ==================================== */
+
+.chaplaincy-content {
+    max-width: 900px;
+    margin: 20px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.chaplaincy-content h2 {
+    color: royalblue;
+    font-size: 1.6rem;
+    margin-top: 30px;
+    border-left: 5px solid royalblue;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.chaplaincy-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.chaplaincy-image-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.chaplaincy-image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.service-list li {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #333;
+    border-left: 5px solid royalblue;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Responsive adjustment for chaplaincy services */
+@media (max-width: 600px) {
+    .chaplaincy-content {
+        padding: 20px;
+    }
+    .service-list {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+}
+
+
+/* ====================================
+   EVENTS PAGE STYLING
+   ==================================== */
+
+.events-container {
+    max-width: 900px;
+    margin: 20px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.events-container p.intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.event-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.event-header {
+    background-color: royalblue;
+    color: white;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .links {
-    display: none;
-    margin-left: 20px;
-  }
+.event-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
 
-  .links a {
-    display: block;
+.event-date {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.event-details {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.event-details img {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.event-info {
+    flex-grow: 1;
+}
+
+.event-info p {
     margin: 5px 0;
-    color: blue;
-    text-decoration: none;
-  }
+    line-height: 1.5;
+}
 
-  .links a:hover {
+.event-location, .event-time {
+    font-weight: 600;
+    color: #004aad;
+}
+
+.event-button {
+    display: inline-block;
+    background-color: #004aad;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.event-button:hover {
+    background-color: darkblue;
+}
+
+/* Responsive adjustments for events */
+@media (max-width: 600px) {
+    .events-container {
+        padding: 15px;
+    }
+    .event-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .event-header h3, .event-date {
+        margin-bottom: 5px;
+    }
+    .event-details {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .event-details img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/* ====================================
+   CORE VALUES PAGE STYLING
+   ==================================== */
+
+.values-content {
+    max-width: 900px;
+    margin: 20px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.values-content h1 {
+    text-align: center;
+    color: #004aad;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid royalblue;
+    padding-bottom: 10px;
+}
+
+.value-statement p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Grid Layout for Core Values */
+.core-values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 30px; 
+}
+
+.value-item {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-left: 5px solid royalblue; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+}
+
+.value-item:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.value-item h2 {
+    color: royalblue;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.value-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Style to hide the old image placeholder */
+.original-image-placeholder {
+    display: none; 
+}
+
+/* Responsive adjustments for core values */
+@media (max-width: 768px) {
+    .core-values-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+@media (max-width: 600px) {
+    .values-content {
+        padding: 20px;
+    }
+    .values-content h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* ====================================
+   MISSION & VISION PAGE STYLING
+   ==================================== */
+
+.mission-vision-content {
+    max-width: 900px;
+    margin: 20px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.mission-vision-content h1 {
+    text-align: center;
+    color: #004aad;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    border-bottom: 3px solid royalblue;
+    padding-bottom: 10px;
+}
+
+.mission-vision-content h2 {
+    color: royalblue;
+    font-size: 1.6rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 5px solid royalblue;
+    padding-left: 15px;
+}
+
+.mission-vision-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.mission-vision-content ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    margin-bottom: 25px;
+}
+
+.mission-vision-content ul li {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments for mission/vision */
+@media (max-width: 600px) {
+    .mission-vision-content {
+        padding: 20px;
+    }
+    .mission-vision-content h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* ====================================
+   NEWSLETTERS PAGE STYLING
+   ==================================== */
+
+.newsletter-main-content {
+    max-width: 800px;
+    margin: 20px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.newsletter-main-content p.intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.newsletter-main-content section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.newsletter-main-content h2 {
+    color: #004aad;
+    font-size: 1.35rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid royalblue;
+}
+
+.newsletter-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.newsletter-list li {
+    margin-bottom: 8px;
+}
+
+.newsletter-list a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #f0f4ff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s;
+    border-left: 3px solid royalblue;
+}
+
+.newsletter-list a:hover {
+    background-color: #e0e6ff;
+    color: royalblue;
+}
+
+@media (max-width: 600px) {
+    .newsletter-main-content {
+        padding: 20px;
+    }
+    .newsletter-main-content h1 {
+        font-size: 1.8rem;
+    }
+    .newsletter-main-content h2 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* ====================================
+   GALLERY PAGE STYLING
+   ==================================== */
+
+.main-gallery {
+    max-width: 1200px;
+    margin: 20px auto 50px;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.main-gallery h1 {
+    text-align: center;
+    color: #004aad;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    border-bottom: 3px solid royalblue;
+    padding-bottom: 10px;
+}
+
+.gallery-intro {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Modern CSS Grid Layout for the Photo Gallery */
+.image-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 15px; 
+}
+
+.image-gallery-grid img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.image-gallery-grid img:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* Responsive adjustments for gallery */
+@media (max-width: 600px) {
+    .main-gallery {
+        padding: 20px 10px;
+    }
+    .main-gallery h1 {
+        font-size: 1.8rem;
+    }
+    .image-gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+        gap: 10px;
+    }
+    .image-gallery-grid img {
+        height: 150px;
+    }
+}
+
+
+/* ====================================
+   CONTACT PAGE STYLING
+   ==================================== */
+
+.main-contact-content { 
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.main-contact-content h1 {
+  text-align: center;
+  color: #004aad; 
+  margin-bottom: 25px;
+  border-bottom: 3px solid royalblue; 
+  padding-bottom: 10px;
+  font-size: 2.2rem;
+}
+.main-contact-content h2 { 
+    color: royalblue;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.info-item {
+  flex: 1 1 250px;
+  background: #e8ebf4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: inset 0 0 8px rgba(0,0,139,0.1);
+}
+.info-item h3 {
+  margin-bottom: 10px;
+  color: royalblue;
+}
+.info-item a {
+    color: #333; 
+    text-decoration: none; 
+    display: block; 
+    margin-top: 5px;
+}
+.info-item a:hover {
+    color: royalblue;
     text-decoration: underline;
+}
+form.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: royalblue;
+}
+form input, form textarea {
+  padding: 10px;
+  border: 2px solid #ccc; 
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+form input:focus, form textarea:focus {
+    border-color: royalblue; 
+    outline: none;
+}
+form textarea {
+  min-height: 120px;
+}
+form button {
+  background-color: royalblue;
+  color: white;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+form button:hover {
+  background-color: #003cb3;
+}
+.map-container {
+  margin-top: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: 350px;
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contact-info {
+    flex-direction: column;
   }
+  .info-item {
+    flex: 1 1 100%;
+  }
+  .main-contact-content {
+      padding: 20px;
+  }
+}
+
+
+/* ====================================
+   BIBLE ACADEMY PAGE STYLING
+   ==================================== */
+
+.academy-main-content {
+  max-width: 1000px;
+  margin: 30px auto 70px;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.academy-main-content h1 {
+  text-align: center;
+  color: #004aad;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  border-bottom: 3px solid royalblue;
+  padding-bottom: 10px;
+}
+
+.academy-welcome-section h2, 
+#academy-downloads h2, 
+#doctrine-committee h2 {
+    color: royalblue;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-left: 5px solid #004aad;
+    padding-left: 15px;
+}
+
+/* Welcome Section Layout */
+.welcome-grid {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.welcome-text {
+    flex: 2;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.welcome-image {
+    flex: 1;
+    min-width: 250px;
+}
+.welcome-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Downloads List Styling */
+.download-intro {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+}
+
+.resource-list li {
+    margin-bottom: 10px;
+}
+
+.resource-list a {
+    display: block;
+    padding: 15px 20px;
+    background-color: #f0f4ff;
+    border: 1px solid royalblue;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #004aad;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.resource-list a:hover {
+    background-color: #e0e6ff;
+    transform: translateY(-2px);
+}
+
+.resource-list .icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+/* Committee Profiles Grid */
+.committee-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.profile {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    background: #fafafa;
+}
+
+.profile img {
+    width: 100%;
+    max-width: 150px; 
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; 
+    margin-bottom: 15px;
+    border: 4px solid royalblue;
+}
+
+.profile h3, .profile h4 {
+    color: #004aad;
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+.profile p.title {
+    color: #555;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments for Bible Academy */
+@media (max-width: 768px) {
+    .welcome-grid {
+        flex-direction: column;
+    }
+    .welcome-image {
+        order: -1; 
+        min-width: 100%;
+        text-align: center;
+    }
+    .welcome-image img {
+        max-width: 250px;
+    }
+    .committee-profiles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    }
+}
