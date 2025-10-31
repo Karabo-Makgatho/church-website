@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-/* --- HEADER AND LOGOS --- */
+/* --- HEADER AND LOGOS (FIXED: Smaller size) --- */
 #church-header {
     display: flex;
     justify-content: center;
@@ -27,7 +27,7 @@ body {
 }
 
 #church-header img {
-    max-height: 70px; /* Standard size for all logos */
+    max-height: 50px; /* FIXED: Reduced from 70px to 50px */
     width: auto;
     margin: 0 5px;
     object-fit: contain;
@@ -41,7 +41,7 @@ body {
 /* --- NAVIGATION BAR --- */
 .nav-wrapper {
     position: fixed;
-    top: 85px; /* Adjust based on header height (70px + border/padding) */
+    top: 85px; /* Adjust based on header height (50px + border/padding) */
     left: 0;
     width: 100%;
     background-color: #004aad; /* Dark blue background */
@@ -77,26 +77,14 @@ body {
 /* Hamburger menu button (initially hidden on desktop) */
 #hamburger {
     display: none;
-    color: white;
+    color: royalblue; /* FIXED: Changed to royalblue for better visibility against the white header */
     font-size: 1.5rem;
     padding: 10px 20px;
     cursor: pointer;
     text-align: right;
 }
 
-/* Active Page Style (to be set manually in HTML for now) */
-#tabs-top a[href="current-page.html"] {
-    background-color: royalblue;
-}
-
-/* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
-main {
-    padding: 20px;
-    max-width: 1100px;
-    margin: 20px auto;
-}
-
-/* Global Heading Style (Replaces old h3 strong tag) */
+/* Global Heading Style */
 h1 {
     text-align: center;
     color: #004aad;
@@ -106,17 +94,24 @@ h1 {
     padding-bottom: 10px;
 }
 
+/* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
+main {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
 /* --- MEDIA QUERIES for Tablet and Mobile --- */
 @media (max-width: 1024px) {
     #church-header img {
-        max-height: 60px;
+        max-height: 45px;
     }
 }
 
 @media (max-width: 768px) {
     /* Adjust header for less horizontal space */
     #church-header img {
-        max-height: 50px;
+        max-height: 40px;
         margin: 0 2px;
     }
     
@@ -163,8 +158,8 @@ h1 {
         top: 65px; /* Adjust position relative to header */
     }
 
-    /* Show only essential logos on small screen */
-    #church-header img:nth-child(n+3) { /* Hide logo 3 and onwards */
+    /* Show only 4 essential logos on small screen */
+    #church-header img:nth-child(n+5) { 
         display: none;
     }
     #church-header {
@@ -185,7 +180,7 @@ h1 {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    height: 500px; /* Define a fixed height for the container */
+    height: 350px; /* FIXED: Reduced from 500px to 350px */
 }
 
 .slide {
@@ -294,7 +289,7 @@ h1 {
 /* Media query for homepage slideshow */
 @media (max-width: 768px) {
     .slideshow-container {
-        height: 300px; /* Shorter height on mobile */
+        height: 250px; /* FIXED: Reduced from 300px to 250px on mobile */
     }
     .slide-caption {
         font-size: 1rem;
@@ -503,7 +498,7 @@ h1 {
 
 
 /* ====================================
-   CORE VALUES PAGE STYLING
+   CORE VALUES PAGE STYLING (TEXT-BASED)
    ==================================== */
 
 .values-content {
@@ -564,11 +559,6 @@ h1 {
     line-height: 1.6;
 }
 
-/* Style to hide the old image placeholder */
-.original-image-placeholder {
-    display: none; 
-}
-
 /* Responsive adjustments for core values */
 @media (max-width: 768px) {
     .core-values-grid {
@@ -587,55 +577,59 @@ h1 {
 
 
 /* ====================================
-   MISSION & VISION PAGE STYLING
+   MISSION & VISION PAGE (TEXT-BASED STRUCTURE)
    ==================================== */
 
+/* Updated Container Style for structured content */
 .mission-vision-content {
-    max-width: 900px;
-    margin: 20px auto 50px;
-    padding: 30px;
+    max-width: 900px; /* Adjusted back for text content */
+    margin: 30px auto 50px;
+    padding: 30px; /* Increased padding for text content */
     background: white;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.mission-vision-content h1 {
-    text-align: center;
-    color: #004aad;
-    font-size: 2.2rem;
+/* Structure for sections */
+.mission-vision-content section {
     margin-bottom: 30px;
-    border-bottom: 3px solid royalblue;
-    padding-bottom: 10px;
 }
 
 .mission-vision-content h2 {
+    display: block; /* Show h2 headings again */
     color: royalblue;
-    font-size: 1.6rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-left: 5px solid royalblue;
+    font-size: 1.8rem;
+    border-left: 5px solid #004aad;
     padding-left: 15px;
+    margin-bottom: 15px;
 }
 
 .mission-vision-content p {
+    display: block; /* Show paragraphs again */
     font-size: 1.05rem;
     line-height: 1.7;
     margin-bottom: 20px;
 }
 
 .mission-vision-content ul {
-    list-style-type: disc;
-    padding-left: 40px;
-    margin-bottom: 25px;
+    display: block; /* Show lists again */
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
 }
 
 .mission-vision-content ul li {
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 5px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-weight: 500;
+    color: #444;
 }
 
-/* Responsive adjustments for mission/vision */
+/* Hide image container since we are using text now, to prevent conflicts */
+#mission-image-container {
+    display: none;
+}
+
 @media (max-width: 600px) {
     .mission-vision-content {
         padding: 20px;
@@ -1065,3 +1059,4 @@ form button:hover {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
     }
 }
+
