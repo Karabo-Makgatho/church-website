@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Welcome to International St John's Apostolic Faith Mission Church." />
+    <meta name="description" content="Welcome to International St John's Apostolic Faith Mission Church Chaplaincy Ministry." />
     <meta name="keywords" content="church, faith, mission, gospel, worship, bible, St John's, Apostolic, South Africa, chaplaincy" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>International St John's Apostolic Faith Mission Church</title>
+    <title>Chaplaincy Ministry - International St John's Apostolic Faith Mission Church</title>
     <!-- Poppins Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -13,7 +13,7 @@
     
     <style>
         /* ====================================
-        BASE & GLOBAL STYLES (Applies to all pages)
+        BASE & GLOBAL STYLES 
         ==================================== */
         :root {
             --primary-color: #004aad; /* Dark Blue */
@@ -21,6 +21,7 @@
             --light-bg: #f4f6f9;
             --white: white;
             --text-color: #333;
+            --accent-color: #f7a700; /* Gold/Orange */
         }
 
         * {
@@ -31,299 +32,144 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-bg);
             margin: 0;
-            padding-top: 100px; /* Space for the fixed header/nav */
+            padding-top: 85px; /* Space for fixed header */
             color: var(--text-color);
         }
-
-        /* --- HEADER AND LOGOS --- */
-        #church-header {
-            display: flex;
-            justify-content: space-between; /* Space out hamburger and logos */
-            align-items: center;
-            background-color: var(--white);
-            padding: 10px 20px;
-            border-bottom: 5px solid var(--secondary-color);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-
-        /* Button to toggle the side menu */
-        #hamburger-btn {
-            display: block;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-            padding: 0;
-            margin-right: 15px; /* Space between button and logos */
-            z-index: 1001;
-            transition: color 0.3s;
-        }
-        #hamburger-btn:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Wrapper for logos to maintain structure */
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            flex-grow: 1; 
-            justify-content: flex-end; /* Push logos to the right slightly */
-        }
-
-        #church-header img {
-            max-height: 70px; /* Standard size for all logos */
-            width: auto;
-            margin: 0 5px;
-            object-fit: contain;
-            border-radius: 8px; /* Added rounded corners */
-        }
-
-        /* Hide placeholder logos until needed, but they maintain structure */
-        .placeholder-logo {
-            display: none;
-        }
-
-        /* --- NEW SIDE NAVIGATION BAR (Off-Canvas Menu) --- */
-        #side-menu {
-            height: 100%;
-            width: 280px; /* Width of the sliding menu */
-            position: fixed;
-            z-index: 1050;
-            top: 0;
-            left: -280px; /* Hidden state: Off-screen to the left */
-            background-color: var(--primary-color);
-            overflow-y: auto; 
-            padding-top: 80px; /* Space from the top edge */
-            transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-        }
-
-        #side-menu.open {
-            left: 0; /* Open state: Slides into view */
-        }
-
-        #side-menu a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            color: var(--white);
-            display: block;
-            transition: background-color 0.3s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 500;
-        }
-
-        #side-menu a:hover, #side-menu a.active {
-            background-color: var(--secondary-color);
-        }
-
-        /* Optional: Overlay to dim background when menu is open */
-        #main-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1040;
-            display: none;
-            cursor: pointer;
-        }
-        #main-overlay.visible {
-            display: block;
-        }
-
-        /* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
+        
         main {
             padding: 20px;
+            /* Increased max-width for better page filling */
             max-width: 1200px;
             margin: 20px auto;
         }
 
-        /* Global Heading Style */
         h1 {
             text-align: center;
             color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             border-bottom: 3px solid var(--secondary-color);
             padding-bottom: 10px;
             font-weight: 700;
         }
 
-        /* --- MEDIA QUERIES for Tablet and Mobile --- */
-        @media (max-width: 768px) {
-            #church-header img {
-                max-height: 50px;
-                margin: 0 2px;
-            }
-            
-            /* Only show a couple of logos on small screen */
-            .logo-wrapper img:nth-child(n+3) { /* Hide logo 3 and onwards */
-                display: none;
-            }
+        /* --- HEADER AND LOGOS (Copied from events.html) --- */
+        #church-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
-        @media (max-width: 480px) {
-            /* Slightly reduce top padding since the header is smaller */
-            body {
-                padding-top: 80px;
-            }
-        }
-
-        /* --- HOMEPAGE LEADERSHIP SECTION STYLING (NEW ADDITION) --- */
-        .leaders-container {
+        #logo-strip {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin: 40px auto 60px;
-            padding: 20px;
-            max-width: 900px;
-        }
-        .leader {
-            text-align: center;
-            flex-basis: 45%;
-            padding: 20px;
-            background: var(--white);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .leader:hover {
-            transform: translateY(-5px);
-        }
-        .leader img {
-            width: 400px;
-            height: 400px;
-            object-fit: cover;
-            
-            border: 5px solid var(--secondary-color);
-            margin-bottom: 15px;
-        }
-        .leader p {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            margin: 0;
-        }
-        @media (max-width: 600px) {
-            .leaders-container {
-                flex-direction: column;
-                gap: 30px;
-            }
-            .leader {
-                flex-basis: 100%;
-            }
+            align-items: center;
+            flex-grow: 1;
+            margin: 0 10px;
         }
 
-    
-
-        /* Welcome Section */
-        #welcome-section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        #welcome-section h2 {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        #welcome-section p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        /* Quick Links/Cards Section (Included for context, but not in current HTML) */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none; 
-            color: var(--text-color);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .card-icon {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 20px 0;
-            font-size: 2rem;
-        }
-
-        .card-content {
-            padding: 20px 15px;
-        }
-
-        .card-content h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .card-content p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* Media query for homepage slideshow */
-        @media (max-width: 768px) {
-            .slideshow-container {
-                height: 250px; /* Shorter height on mobile */
-            }
-            .slide-caption {
-                font-size: 1rem;
-                padding: 10px;
-            }
-            #welcome-section {
-                padding: 20px;
-                margin: 20px auto;
-            }
-            .card-grid {
-                gap: 20px;
-                grid-template-columns: 1fr;
-            }
+        #logo-strip img {
+            max-height: 65px;
+            width: auto;
+            margin: 0 4px;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: block;
         }
         
-        /* The rest of the page-specific CSS is kept here for completeness, though the current HTML only shows the homepage. */
+        #logo-strip img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Hamburger Icon Styling */
+        #hamburger {
+            padding: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
 
+        #hamburger:hover i {
+            color: var(--secondary-color) !important;
+        }
+
+        /* --- SLIDING MENU STYLES (Copied from events.html) --- */
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1050;
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        #mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--primary-color);
+            z-index: 1060;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        #mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+        
+        /* Menu Content Styles */
+        #mobile-menu-panel nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        
+        #mobile-menu-panel a {
+            color: var(--white);
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+        
         /* ====================================
-        CHAPLAINCY PAGE STYLING
+        CHAPLAINCY PAGE STYLING (Layout Fixed)
         ==================================== */
         .chaplaincy-content {
-            max-width: 900px;
+            /* Increased max-width for better page filling */
+            max-width: 1100px; 
             margin: 20px auto 50px;
             padding: 30px;
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
+        
         .chaplaincy-content h2 {
             color: royalblue;
             font-size: 1.6rem;
@@ -336,6 +182,20 @@
             font-size: 1.05rem;
             line-height: 1.7;
             margin-bottom: 20px;
+        }
+        .chaplaincy-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .chaplaincy-logos img {
+            max-height: 100px;
+            width: auto;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
         }
         .service-list {
             list-style-type: none;
@@ -354,140 +214,212 @@
             border-left: 5px solid royalblue;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        @media (max-width: 600px) {
+        
+        /* Leadership Image Container (Adjusted for better page fill) */
+        .leaders-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px auto 60px;
+            padding: 20px;
+            max-width: 100%; /* Allows it to expand to content width */
+        }
+        .leader {
+            text-align: center;
+            flex-basis: 45%;
+            padding: 20px;
+            background: var(--white);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .leader img {
+            width: 100%; /* Full width of its flexible container */
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 1 / 1; /* Keeps the image square */
+            object-fit: cover;
+            border-radius: 12px;
+            border: 5px solid var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .leader p {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* ====================================
+        MEDIA QUERIES (Updated for new header)
+        ==================================== */
+        @media (max-width: 768px) {
+            body { padding-top: 75px; } 
+            
+            #church-header {
+                padding: 5px 10px;
+            }
+            #logo-strip {
+                display: none;
+            }
+            /* Show title on mobile for better context */
+            #church-header .header-title {
+                display: block;
+                font-size: 1.1rem;
+                flex-grow: 1;
+                text-align: center;
+                margin-left: 10px;
+            }
+            
+            .leaders-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .leader {
+                flex-basis: 100%;
+            }
             .service-list {
                 grid-template-columns: 1fr;
             }
         }
-        
-        /* ... (The rest of the CSS blocks for Events, Core Values, Mission, etc., are omitted here for brevity but were included in the provided CSS and remain valid) ... */
     </style>
 </head>
 <body>
-
-<!-- Mobile Side Menu (Hidden by default) -->
-<div id="side-menu">
-    <!-- Close Button -->
-    <button id="close-menu-btn" style="position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 2rem; color: white; cursor: pointer;">
-        &times;
-    </button>
-    <!-- Navigation Links moved here from the header -->
-    <a href="index.html"><i class="fas fa-home"></i> HOME PAGE</a>
-    <a href="mission.html"><i class="fas fa-bullseye"></i> MISSION & VISION</a>
-    <a href="values.html"><i class="fas fa-hand-holding-heart"></i> OUR CORE VALUES</a>
-    <a href="chaplaincy.html" class="active"><i class="fas fa-cross"></i> CHAPLAINCY</a>
-    <a href="events.html"><i class="fas fa-calendar-alt"></i> EVENTS</a>
-    <a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a>
-    <a href="bibleacademy.html"><i class="fas fa-book-open"></i> BIBLE ACADEMY</a>
-    <a href="newsletters.html"><i class="fas fa-envelope-open-text"></i> NEWSLETTERS</a>
-    <a href="contact.html"><i class="fas fa-map-marker-alt"></i> CONTACT US</a>
-    <div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-        &copy; 2025 Int. St. John's AFM Church
-    </div>
-</div>
-
-<!-- Overlay for when the menu is open -->
-<div id="main-overlay"></div>
-
-<!-- FIXED HEADER (Now contains both button and logos) -->
-<header id="church-header">
-    <button id="hamburger-btn" aria-label="Open Menu">
-        <i class="fas fa-bars"></i>
-    </button>
     
-    <div class="logo-wrapper">
-        <!-- Replaced local paths with placeholders and kept the styles for responsiveness -->
-        <img src="Logos/IMG-20250616-WA0066~2.jpg"alt="Church logo 2" />
-        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 3" />
-        <img src="Logos/IMG-20250616-WA0066~5.jpg"  alt="Church logo 4" />
-        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 5" class="placeholder-logo" />
-        <img src="Logos/Chaplainlogo1" alt="Church logo 6" class="placeholder-logo" />
-        <img src="Logos/Chaplainlogo2" alt="Church logo 7" class="placeholder-logo" />
-        <img src="Logos/Chaplainlogo3" alt="Church logo 7" class="placeholder-logo" />
-    </div>
-</header>
-
-    <main class="chaplaincy-content">
-        <h1>Our Chaplaincy Ministry</h1>
-
-        <section class="chaplaincy-logos">
-           <!-- Adding onerror handlers to logos for stability -->
-           <img src="Logos/chaplainlogo1.jpg" alt="Chaplain Logo 1" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f7a700/ffffff?text=C+Logo+1';" />
-           <img src="Logos/chaplainlogo2.jpg" alt="Chaplain Logo 2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/004aad/ffffff?text=C+Logo+2';" />
-           <img src="Logos/chaplainlogo3.jpg" alt="Chaplain Logo 3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f7a700/ffffff?text=C+Logo+3';" />
-           <img src="Logos/chaplainlogo4.jpg" alt="Chaplain Logo 4" onerror="this.onerror=null; this.src='https://placehold.co/80x80/004aad/ffffff?text=C+Logo+4';" />
-        
-        </section>
-
-        <section class="info-section">
-            <h2>What is Being a Chaplain?</h2>
-            <p>
-                A **Chaplain** is a minister or faith leader who provides spiritual care outside the walls of a church. They serve in diverse settings like hospitals, schools, military units, prisons, and corporations.
-            </p>
-            <p>
-                The role of a Chaplain is to offer **non-judgmental spiritual support, emotional comfort, and guidance** to people of all faiths (or no faith) during times of crisis, change, or spiritual need. They are a presence of peace, compassion, and hope, dedicated to the holistic well-being of individuals in secular or specialized environments.
-            </p>
-        </section>
-        
-        <hr style="border: 0; height: 1px; background-color: #ccc; margin: 40px auto; max-width: 90%;">
-
-        <section class="info-section">
-            <h2>Our Chaplain Academy: Training for Service</h2>
-            <p>
-                The International St John's Apostolic Faith Mission Church **Chaplain Academy** is dedicated to raising, training, and ordaining qualified Chaplains for service within the church and the broader community. Our Academy provides comprehensive training that integrates theological study with practical, professional skills in counseling, crisis intervention, and spiritual diplomacy.
-            </p>
-            <p>
-                **What our Academy offers:**
-            </p>
-            <ul>
-                <li>**In-Depth Theological Study:** A foundation in Biblical principles and church doctrine relevant to pastoral care.</li>
-                <li>**Practical Ministry Skills:** Training in grief counseling, hospital visitation, trauma response, and ethical conduct.</li>
-                <li>**Official Ordination and Certification:** Graduates are prepared for official commissioning as a Chaplain, ready to serve as a beacon of Christ's love in the world.</li>
-            </ul>
-        </section>
-  <!-- LEADERSHIP PROFILES (Using placeholders for images) -->
-    <div class="leaders-container">
-        <div class="leader">
-            <img src="Images/ChaplainUniform1.jpg" alt="Chaplain Uniform" />
-            <p>CHAPLAIN UNIFORM</p>
+    <header id="church-header">
+        <!-- Hamburger Icon for Menu -->
+        <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
+            <i class="fas fa-bars" style="color: var(--primary-color); font-size: 28px;"></i>
         </div>
         
-    </div>
-</main>
+        <!-- Church Title (Visible on Mobile) -->
+        <div class="header-title" style="text-align: center;">
+            <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weight: 700;"></h1>
+        </div>
 
+        <!-- 7 Logos Strip (Hidden on Mobile) -->
+        <div id="logo-strip">
+            <!-- Placeholder images with onerror for stability -->
+            <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L1';" />
+            <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L2';" />
+            <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L3';" />
+            <img src="Logos/IMG-20250617_100228_034.jpg" alt="Church logo 4" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L4';" />
+            <img src="Logos/Chaplainlogo1" alt="Church logo 5" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L5';" />
+            <img src="Logos/Chaplainlogo2" alt="Church logo 6" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L6';" />
+            <img src="Logos/Chaplainlogo3" alt="Church logo 7" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L7';" />
+        </div>
 
-    </main>
+    <!-- Mobile Menu Overlay -->
+        <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
+        
+        <!-- Mobile Menu Panel (Slides from left) -->
+        <div id="mobile-menu-panel">
+            <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
+                <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem;"></h2> 
+            </div>
+            <nav>
+                <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
+                <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
+                <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
+                <a href="chaplaincy.html" class="active"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
+                <a href="events.html"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
+                <a href="gallery.html"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
+                <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
+                <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
+                <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
+            </nav>
+        </div>
+    </header>
 
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const sideMenu = document.getElementById('side-menu');
-        const mainOverlay = document.getElementById('main-overlay');
+    <main>
+        <div class="chaplaincy-content">
+            <h1>Our Chaplaincy Ministry</h1>
 
-        // --- Side Menu and Overlay Functions ---
-        function toggleMenu(isOpen) {
-            if (isOpen) {
-                sideMenu.classList.add('open');
-                mainOverlay.classList.add('visible');
-                // Optional: prevent background scrolling when menu is open
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                sideMenu.classList.remove('open');
-                mainOverlay.classList.remove('visible');
-                document.body.style.overflow = '';
+            <section class="chaplaincy-logos">
+                <img src="Logos/chaplainlogo1.jpg" alt="Chaplain Logo 1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f7a700/ffffff?text=C+Logo+1';" />
+                <img src="Logos/chaplainlogo2.jpg" alt="Chaplain Logo 2" onerror="this.onerror=null; this.src='https://placehold.co/100x100/004aad/ffffff?text=C+Logo+2';" />
+                <img src="Logos/chaplainlogo3.jpg" alt="Chaplain Logo 3" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f7a700/ffffff?text=C+Logo+3';" />
+                <img src="Logos/chaplainlogo4.jpg" alt="Chaplain Logo 4" onerror="this.onerror=null; this.src='https://placehold.co/100x100/004aad/ffffff?text=C+Logo+4';" />
+            </section>
+
+            <section class="info-section">
+                <h2>What is Being a Chaplain?</h2>
+                <p>
+                    A **Chaplain** is a minister or faith leader who provides spiritual care outside the walls of a church. They serve in diverse settings like hospitals, schools, military units, prisons, and corporations.
+                </p>
+                <p>
+                    The role of a Chaplain is to offer **non-judgmental spiritual support, emotional comfort, and guidance** to people of all faiths (or no faith) during times of crisis, change, or spiritual need. They are a presence of peace, compassion, and hope, dedicated to the holistic well-being of individuals in secular or specialized environments.
+                </p>
+            </section>
+            
+            <hr style="border: 0; height: 1px; background-color: #ccc; margin: 40px auto; max-width: 90%;">
+
+            <section class="info-section">
+                <h2>Our Chaplain Academy: Training for Service</h2>
+                <p>
+                    The International St John's Apostolic Faith Mission Church **Chaplain Academy** is dedicated to raising, training, and ordaining qualified Chaplains for service within the church and the broader community. Our Academy provides comprehensive training that integrates theological study with practical, professional skills in counseling, crisis intervention, and spiritual diplomacy.
+                </p>
+                <p>
+                    **What our Academy offers:**
+                </p>
+                <ul class="service-list">
+                    <li><i class="fas fa-book-reader" style="margin-right: 8px;"></i>In-Depth Theological Study</li>
+                    <li><i class="fas fa-counseling" style="margin-right: 8px;"></i>Practical Ministry Skills</li>
+                    <li><i class="fas fa-certificate" style="margin-right: 8px;"></i>Official Ordination and Certification</li>
+                    <li><i class="fas fa-hospital" style="margin-right: 8px;"></i>Hospital & Trauma Response Training</li>
+                </ul>
+            </section>
+            
+            <!-- LEADERSHIP PROFILES (Adjusted size for full content width) -->
+            <div class="leaders-container">
+                <div class="leader">
+                    <img src="Images/ChaplainUniform1.jpg" alt="Chaplain Uniform" onerror="this.onerror=null; this.src='https://placehold.co/400x400/004aad/ffffff?text=Chaplain+Uniform';" />
+                    <p>CHAPLAIN UNIFORM</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
+            const hamburger = document.getElementById('hamburger');
+            const menuPanel = document.getElementById('mobile-menu-panel');
+            const overlay = document.getElementById('menu-overlay');
+
+            const toggleMenu = () => {
+                const isOpen = menuPanel.classList.contains('open');
+                if (isOpen) {
+                    menuPanel.classList.remove('open');
+                    // Delay hiding overlay to allow CSS transition to finish
+                    setTimeout(() => overlay.style.display = 'none', 300);
+                    document.body.style.overflow = ''; // Re-enable scrolling
+                    hamburger.setAttribute('aria-expanded', 'false');
+                } else {
+                    overlay.style.display = 'block';
+                    // Delay opening panel slightly after showing overlay
+                    setTimeout(() => menuPanel.classList.add('open'), 10);
+                    document.body.style.overflow = 'hidden'; // Disable background scrolling
+                    hamburger.setAttribute('aria-expanded', 'true');
+                }
+            };
+
+            if (hamburger && menuPanel) {
+                const menuLinks = menuPanel.querySelectorAll('a'); 
+                
+                hamburger.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', toggleMenu); 
+                
+                // Close menu when a link is clicked
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Check if the link is active before closing the menu (prevents double toggle on self-link)
+                        if (!link.classList.contains('active')) {
+                            toggleMenu();
+                        }
+                    });
+                });
             }
-        }
-
-        // Event listeners for menu control
-        if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => toggleMenu(true));
-        if (closeMenuBtn) closeMenuBtn.addEventListener('click', () => toggleMenu(false));
-        if (mainOverlay) mainOverlay.addEventListener('click', () => toggleMenu(false));
-
-        // --- Slideshow Functionality ---
-        // Removed as there is no element with id="slideshow" on this page, 
-        // which was causing the 'Cannot read properties of null' error.
-    });
+        });
     </script>
 </body>
 </html>
