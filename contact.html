@@ -1,88 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Contact International St John's Apostolic Faith Mission Church for spiritual consultations, inquiries, or ministry." />
-  <meta name="keywords" content="church, contact, phone, email, address, Pretoria, St John's, Apostolic, South Africa, chaplaincy" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us - International St John's Apostolic Faith Mission Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="description" content="Contact International St John's Apostolic Faith Mission Church for spiritual consultations, inquiries, or ministry." />
+  <meta name="keywords" content="church, contact, phone, email, address, Pretoria, St John's, Apostolic, South Africa, chaplaincy" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - International St John's Apostolic Faith Mission Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ====================================
+        BASE & GLOBAL STYLES
+        ==================================== */
+        :root {
+            --primary-color: #004aad; /* Dark Blue */
+            --secondary-color: royalblue; /* Bright Blue */
+            --light-bg: #f4f6f9;
+            --white: white;
+            --text-color: #333;
+            --accent-color: #f7a700; /* Gold/Orange */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            /* Space for fixed header + menu panel */
+            padding-top: 105px; 
+            color: var(--text-color);
+        }
+        
+        .contact-container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* --- HEADER AND LOGOS --- (Adjusted for Hamburger) */
+        #church-header {
+            display: flex;
+            justify-content: space-between; /* Space out hamburger, title, logos */
+            align-items: center;
+            background-color: var(--white);
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #logo-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Allow logos to shrink on small screens */
+            flex-grow: 1; 
+            margin: 0 10px;
+        }
+
+        #logo-strip img {
+            max-height: 65px;
+            width: auto;
+            margin: 0 4px;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: block;
+        }
+        
+        #logo-strip img:hover {
+             transform: scale(1.05);
+        }
+        
+        /* Hamburger Icon Styling */
+        #hamburger {
+            padding: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+            min-width: 30px;
+        }
+
+        #hamburger i {
+            color: var(--primary-color); 
+            font-size: 28px;
+        }
+
+        #hamburger:hover i {
+            color: var(--secondary-color) !important;
+        }
+        
+        /* --- SLIDING MENU STYLES --- */
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1050;
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        #mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--primary-color);
+            z-index: 1060;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        #mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+        
+        /* Menu Content Styles */
+        #mobile-menu-panel nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        
+        #mobile-menu-panel a {
+            color: var(--white);
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+
+        /* ====================================
+        CONTACT PAGE SPECIFIC STYLES
+        ==================================== */
+        
+        /* Contact Information Grid */
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item {
+            text-align: center;
+            margin: 15px;
+            min-width: 250px;
+        }
+
+        .info-item h3 {
+            color: var(--accent-color);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .info-item p, .info-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            line-height: 1.6;
+            font-size: 1rem;
+            display: block;
+        }
+        
+        .info-item a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.1);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .contact-form button[type="submit"]:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 450px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--primary-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+         /* ====================================
+        MEDIA QUERIES (Mobile responsiveness)
+        ==================================== */
+        @media (max-width: 768px) {
+            body { padding-top: 120px; } /* Adjust padding for smaller header/nav */
+            
+            .contact-info {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .info-item {
+                min-width: unset;
+                margin: 10px 0;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .map-container {
+                height: 300px; /* Make map shorter on mobile */
+            }
+            
+            #logo-strip img {
+                max-height: 55px; /* Smaller logos */
+                margin: 0 2px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body { padding-top: 100px; }
+            h1 { font-size: 2rem; }
+            
+            #logo-strip img {
+                max-height: 45px; /* Even smaller logos */
+            }
+            
+            /* Hide some logos on very small screens */
+            #logo-strip img:nth-child(n+5) {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header id="church-header">
-    <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" />
-    <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" />
-    <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" />
-    <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" />
-    <img src="Logos/logo-placeholder-5.jpg" alt="Church logo 5" class="placeholder-logo" />
-    <img src="Logos/logo-placeholder-6.jpg" alt="Church logo 6" class="placeholder-logo" />
-    <img src="Logos/logo-placeholder-7.jpg" alt="Church logo 7" class="placeholder-logo" />
-  </header>
-
-  <div class="nav-wrapper">
-    <div id="hamburger">&#9776;</div>
-    <nav id="tabs-top" class="closed">
-      <a href="index.html">HOME PAGE</a>
-      <a href="mission.html">MISSION & VISION</a>
-      <a href="values.html">OUR CORE VALUES</a>
-      <a href="chaplaincy.html">CHAPLAINCY</a>
-      <a href="events.html">EVENTS</a>
-      <a href="gallery.html">GALLERY</a>
-      <a href="bibleacademy.html">BIBLE ACADEMY</a>
-      <a href="newsletters.html">NEWSLETTERS</a>
-      <a href="contact.html">CONTACT US</a>
-    </nav>
-  </div>
-
-  <main class="contact-container">
-    <h1>Contact Us</h1>
-
-    <div class="contact-info">
-      <div class="info-item">
-        <h3>Address</h3>
-        <p>4 Henry Williams Road<br>Thaba Tshwane, Pretoria </p>
-      </div>
-      <div class="info-item">
-        <h3>Phone</h3>
-        <a href="tel:+27825960038">+27 82 596 0038</a><br>
-        <a href="tel:+27767220200">+27 76 722 0200</a>
-      </div>
-      <div class="info-item">
-        <h3>Email</h3>
-        <a href="mailto:internationalstjohnsafm@gmail.com">internationalstjohnsafm@gmail.com</a>
-      </div>
+  <header id="church-header">
+    <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
+        <i class="fas fa-bars"></i>
     </div>
-
-    <h2>Send Us a Message</h2>
-    <form class="contact-form" action="#" method="POST">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="Your full name" required />
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required />
-
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" placeholder="Subject of your message" />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
     
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/dir//4+Henry+Williams+Rd,+Thaba+Tshwane,+Centurion,+0187/@-25.7930089,28.0556974,20589m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x1e95631f157cc1f5:0xca97c543a15e7a34!2m2!1d28.1381027!2d-25.7930256?entry=ttu&g_ep=EgoyMDI1MTAyOC4wIKXMDSoASAFQAw%3D%3D" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Church Location Map">
-        </iframe>
+    <div style="text-align: center; flex-grow: 1; margin: 0 10px;">
+        <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weight: 700;"></h1>
     </div>
-  </main>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <!-- 7 Logos Strip -->
+   <div id="logo-strip">
+        <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L1';" />
+        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L2';" />
+        <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L3';" />
+        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L4';" />
+        <img src="Logos/Chaplainlogo1" alt="Church logo 5" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L5';" />
+        <img src="Logos/Chaplainlogo2" alt="Church logo 6" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L6';" />
+        <img src="Logos/Chaplainlogo3" alt="Church logo 7" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L7';" />
+    </div>
+  </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
+    
+    <!-- Mobile Menu Panel (Slides from left) -->
+    <div id="mobile-menu-panel">
+        <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
+            <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem; margin: 0;"></h2>
+        </div>
+        <nav>
+            <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
+            <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
+            <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
+            <a href="chaplaincy.html"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
+            <a href="events.html"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
+            <a href="gallery.html"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
+            <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
+            <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
+            <a href="contact.html" class="active"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
+        </nav>
+    </div>
+
+  <main class="contact-container">
+    <h1>Contact Us</h1>
+
+    <div class="contact-info">
+      <div class="info-item">
+        <h3><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Address</h3>
+        <p>4 Henry Williams Road<br>Thaba Tshwane, Pretoria </p>
+      </div>
+      <div class="info-item">
+        <h3><i class="fas fa-phone-alt" style="margin-right: 8px;"></i>Phone</h3>
+        <a href="tel:+27825960038">+27 82 596 0038</a><br>
+        <a href="tel:+27767220200">+27 76 722 0200</a>
+      </div>
+      <div class="info-item">
+        <h3><i class="fas fa-envelope" style="margin-right: 8px;"></i>Email</h3>
+        <a href="mailto:internationalstjohnsafm@gmail.com">internationalstjohnsafm@gmail.com</a>
+      </div>
+    </div>
+
+    <h2>Send Us a Message</h2>
+    <form class="contact-form" action="#" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject of your message" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    
+    <h2>Our Location</h2>
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5401140996843!2d28.13552827552988!3d-25.793025615748887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95631f157cc1f5%3A0xca97c543a15e7a34!2s4%20Henry%20Williams%20Rd%2C%20Thaba%20Tshwane%2C%20Centurion%2C%200187%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1684344000000!5m2!1sen!2sus"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Church Location Map">
+        </iframe>
+    </div>
+  </main>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
+            const hamburger = document.getElementById('hamburger');
+            const menuPanel = document.getElementById('mobile-menu-panel');
+            const overlay = document.getElementById('menu-overlay');
+            const menuLinks = menuPanel.querySelectorAll('a');
+
+            const toggleMenu = () => {
+                const isOpen = menuPanel.classList.contains('open');
+                if (isOpen) {
+                    menuPanel.classList.remove('open');
+                    // Delay hiding overlay to allow CSS transition to finish
+                    setTimeout(() => overlay.style.display = 'none', 300);
+                    hamburger.setAttribute('aria-expanded', 'false');
+                } else {
+                    overlay.style.display = 'block';
+                    // Delay opening panel slightly after showing overlay
+                    setTimeout(() => menuPanel.classList.add('open'), 10);
+                    hamburger.setAttribute('aria-expanded', 'true');
+                }
+            };
+
+            if (hamburger && menuPanel) {
+                hamburger.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', toggleMenu); 
+                
+                // Close menu when a link is clicked
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+            
+            
+    
+    });
+  </script>
