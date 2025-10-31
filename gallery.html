@@ -154,7 +154,112 @@
             color: var(--white);
         }
         
-     
+        /* --- EVENTS SPECIFIC STYLES --- */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: none;
+            transition: opacity 1s;
+        }
+        .slideshow-container img.active {
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .month {
+            margin-bottom: 20px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .accordion {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .accordion:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .accordion::before {
+            content: '\2b'; /* Plus sign */
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .accordion.active::before {
+            content: '\2212'; /* Minus sign */
+        }
+
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        
+        .panel h3 {
+            color: var(--primary-color);
+            margin-top: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .event-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px 0 20px 0;
+        }
+
+        .event-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .event-gallery img:hover {
+            transform: scale(1.05);
+        }
+
         /* ====================================
         MEDIA QUERIES 
         ==================================== */
@@ -173,7 +278,10 @@
                 text-align: center;
                 margin-left: 10px;
             }
-         
+            .slideshow-container img {
+                height: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -202,8 +310,7 @@
     <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
     
     <!-- Mobile Menu Panel (Slides from left) -->
-      <div class="event-gallery>
-      <div id="mobile-menu-panel">
+    <div id="mobile-menu-panel">
         <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
             <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem;></h2>
         </div>
@@ -219,7 +326,6 @@
             <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
         </nav>
     </div>
-      </div>
   </header>
 
    
@@ -304,7 +410,38 @@
                 });
             }
             
-     
+            // --- Accordion Logic ---
+            var acc = document.getElementsByClassName("accordion");
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    } 
+                });
+            }
+            
+            // --- Slideshow Logic ---
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slideshow-container .slide');
+
+            function showSlides() {
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].classList.remove('active');
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                slides[slideIndex-1].classList.add('active');
+                setTimeout(showSlides, 4000); // Change image every 4 seconds
+            }
+            
+            if (slides.length > 0) {
+                showSlides();
+            }
+        });
     </script>
 </body>
 
@@ -314,6 +451,4 @@
   
 
 </html>
-
-
 
