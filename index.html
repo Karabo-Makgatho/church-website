@@ -36,58 +36,55 @@
         }
 
         /* --- HEADER AND LOGOS --- */
+                /* --- HEADER AND LOGOS --- */
         #church-header {
             display: flex;
-            justify-content: space-between; /* Space out hamburger and logos */
+            justify-content: space-between;
             align-items: center;
             background-color: var(--white);
-            padding: 10px 20px;
-            border-bottom: 5px solid var(--secondary-color);
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-sizing: border-box;
         }
 
-        /* Button to toggle the side menu */
-        #hamburger-btn {
-            display: block;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-            padding: 0;
-            margin-right: 15px; /* Space between button and logos */
-            z-index: 1001;
-            transition: color 0.3s;
-        }
-        #hamburger-btn:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Wrapper for logos to maintain structure */
-        .logo-wrapper {
+        #logo-strip {
             display: flex;
+            justify-content: center;
             align-items: center;
-            flex-grow: 1; 
-            justify-content: flex-end; /* Push logos to the right slightly */
+            flex-grow: 1;
+            margin: 0 10px;
         }
 
-        #church-header img {
-            max-height: 70px; /* Standard size for all logos */
+        #logo-strip img {
+            max-height: 65px;
             width: auto;
-            margin: 0 5px;
+            margin: 0 4px;
             object-fit: contain;
-            border-radius: 8px; /* Added rounded corners */
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: block;
+        }
+        
+        #logo-strip img:hover {
+             transform: scale(1.05);
+        }
+        
+        /* Hamburger Icon Styling */
+        #hamburger {
+            padding: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
         }
 
-        /* Hide placeholder logos until needed, but they maintain structure */
-        .placeholder-logo {
-            display: none;
+        #hamburger:hover i {
+            color: var(--secondary-color) !important;
         }
+
+        
 
         /* --- NEW SIDE NAVIGATION BAR (Off-Canvas Menu) --- */
         #side-menu {
@@ -545,3 +542,4 @@
 </script>
 </body>
 </html>
+
