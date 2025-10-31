@@ -1,166 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Welcome to International St John's Apostolic Faith Mission Church Events." />
-  <meta name="keywords" content="church, faith, mission, gospel, worship, bible, events, St John's, Apostolic, South Africa, chaplaincy" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Events - International St John's Apostolic Faith Mission Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="description" content="Welcome to International St John's Apostolic Faith Mission Church Events." />
+  <meta name="keywords" content="church, faith, mission, gospel, worship, bible, events, St John's, Apostolic, South Africa, chaplaincy" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events - International St John's Apostolic Faith Mission Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* ====================================
+        BASE & GLOBAL STYLES 
+        ==================================== */
+        :root {
+            --primary-color: #004aad; /* Dark Blue */
+            --secondary-color: royalblue; /* Bright Blue */
+            --light-bg: #f4f6f9;
+            --white: white;
+            --text-color: #333;
+            --accent-color: #f7a700; /* Gold/Orange */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding-top: 85px; /* Space for fixed header only */
+            color: var(--text-color);
+        }
+        
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* --- HEADER AND LOGOS --- */
+        #church-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #logo-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        #logo-strip img {
+            max-height: 65px;
+            width: auto;
+            margin: 0 4px;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: block;
+        }
+        
+        #logo-strip img:hover {
+             transform: scale(1.05);
+        }
+        
+        /* Hamburger Icon Styling */
+        #hamburger {
+            padding: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        #hamburger:hover i {
+            color: var(--secondary-color) !important;
+        }
+
+        /* --- SLIDING MENU STYLES --- */
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1050;
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        #mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--primary-color);
+            z-index: 1060;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        #mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+        
+        /* Menu Content Styles */
+        #mobile-menu-panel nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        
+        #mobile-menu-panel a {
+            color: var(--white);
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+        
+        /* --- EVENTS SPECIFIC STYLES --- */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: none;
+            transition: opacity 1s;
+        }
+        .slideshow-container img.active {
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .month {
+            margin-bottom: 20px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .accordion {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .accordion:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .accordion::before {
+            content: '\2b'; /* Plus sign */
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .accordion.active::before {
+            content: '\2212'; /* Minus sign */
+        }
+
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        
+        .panel h3 {
+            color: var(--primary-color);
+            margin-top: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .event-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px 0 20px 0;
+        }
+
+        .event-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .event-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ====================================
+        MEDIA QUERIES 
+        ==================================== */
+        @media (max-width: 768px) {
+            body { padding-top: 75px; } 
+            
+            #church-header {
+                padding: 5px 10px;
+            }
+            #logo-strip {
+                display: none;
+            }
+            #church-header h1 {
+                font-size: 1.1rem;
+                flex-grow: 1;
+                text-align: center;
+                margin-left: 10px;
+            }
+            .slideshow-container img {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header id="church-header">
-    <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" />
-    <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" />
-    <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" />
-    <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" />
-    <img src="Logos/logo-placeholder-5.jpg" alt="Church logo 5" class="placeholder-logo" />
-    <img src="Logos/logo-placeholder-6.jpg" alt="Church logo 6" class="placeholder-logo" />
-    <img src="Logos/logo-placeholder-7.jpg" alt="Church logo 7" class="placeholder-logo" />
-    </header>
-
-  <div class="nav-wrapper">
-    <div id="hamburger">&#9776;</div>
-    <nav id="tabs-top" class="closed">
-      <a href="index.html">HOME PAGE</a>
-      <a href="mission.html">MISSION & VISION</a>
-      <a href="values.html">OUR CORE VALUES</a>
-      <a href="chaplaincy.html">CHAPLAINCY</a> <a href="events.html">EVENTS</a>
-      <a href="gallery.html">GALLERY</a>
-      <a href="bibleacademy.html">BIBLE ACADEMY</a>
-      <a href="newsletters.html">NEWSLETTERS</a>
-      <a href="contact.html">CONTACT US</a>
-    </nav>
-  </div>
-
-  <div class="slideshow-container" id="slideshow">
-    <img src="Images/Oct25/O6.jpg" alt="Upcoming Event 1" class="slide active" height="1000px" width="1000px" />
-    <img src="Images/Oct25/O6.jpg" alt="Upcoming Event 2" class="slide" height="1000px" width="1000px" />
-    <div class="slide-caption">Upcoming Events</div>
-  </div>
-
-  <main class="events-content">
     
-    <h1>Church Events & Highlights</h1>
-
-    <section class="month">
-      <button class="accordion">October 2025</button>
-      <div class="panel">
-        <h3>Men's Conference 2025: 04 October 2025</h3>
-        <div class="event-gallery">
-          <img src="Images/Oct25/O6.jpg" alt="Men's Conference" />
-        </div>
-      </div>
-    </section>
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
     
-    <section class="month">
-      <button class="accordion">September 2025</button>
-      <div class="panel">
-        <h3>Youth Robing Service</h3>
-        <div class="event-gallery">
-          <img src="Images/s25/All2.jpg" alt="Youth Robing" />
-          <img src="Images/s25/All2.jpg" alt="Youth Robing" />
-          <img src="Images/s25/everyone1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/everyone2.jpg" alt="Youth Robing" />
-          <img src="Images/s25/everyone5.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Kamva1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Ongezwa1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Candice1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Karabo1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Sne1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Owam1.jpg" alt="Youth Robing" />
-          <img src="Images/s25/Mpilo1.jpg" alt="Youth Robing" />
+    <!-- Mobile Menu Panel (Slides from left) -->
+    <div id="mobile-menu-panel">
+        <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
+            <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem;></h2>
         </div>
-        
-        <h3>Love Celebrated: The Nakane's Wedding Celebration</h3>
-        <div class="event-gallery">
-          <img src="Images/s25/s1.jpg" alt="Wedding Celebration" />
-          <img src="Images/s25/s9.jpg" alt="Wedding Celebration" />
-          <img src="Images/s25/s3.jpg" alt="Wedding Celebration" />
-          <img src="Images/s25/S222.jpg" alt="Wedding Celebration" />
-          <img src="Images/s25/s5.jpg" alt="Wedding Celebration" />
-          <img src="Images/s25/s8.jpg" alt="Wedding Celebration" />
-          <img src="Images/s25/s15.jpg" alt="Wedding Celebration" />
-        </div>
-      </div>
-    </section>
+        <nav>
+            <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
+            <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
+            <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
+            <a href="chaplaincy.html"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
+            <a href="events.html" class="active"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
+            <a href="gallery.html"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
+            <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
+            <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
+            <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
+        </nav>
+    </div>
+
+  <header id="church-header">
+    <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
+        <i class="fas fa-bars" style="color: var(--primary-color); font-size: 28px;"></i>
+    </div>
     
-    <section class="month">
-      <button class="accordion">August 2025</button>
-      <div class="panel">
-        <h3>Vaal Mokete. Celebrating 30 Years</h3>
-        <div class="event-gallery">
-          <img src="Images/aug25/Mokete1.jpg" alt="Vaal Mokete" />
-        </div>
-        
-        <h3>Newly Appointed: Lady Reverend Goitsemang Maphoto</h3>
-        <div class="event-gallery">
-          <img src="Images/aug25/o1.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/onb.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o2.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o3.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o4.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o5.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o6.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o7.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o8.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o9.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o10.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o11.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o12.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/o14.jpg" alt="Lady Reverend Appointment" />
-          <img src="Images/aug25/fam1.jpg" alt="Lady Reverend Appointment" />
-        </div>
-        
-        <h3>Newly Appointed: Evangelist Modise and Evangelist Sibisi</h3>
-        <div class="event-gallery">
-          <img src="Images/aug25/e1.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/e2.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/e3.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/e4.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/e5.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/e6.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/e7.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/fam2.jpg" alt="Evangelist Appointment" />
-          <img src="Images/aug25/fam3.jpg" alt="Evangelist Appointment" />
-        </div>
-        
-        <h3>Women's Day Conference</h3>
-        <div class="event-gallery">
-          <img src="Images/aug25/w1.jpg" alt="Women's Day Conference" />
-          <img src="Images/aug25/STD.jpg" alt="Women's Day Conference" />
-          <img src="Images/aug25/w2.jpg" alt="Women's Day Conference" />
-          <img src="Images/aug25/w3.jpg" alt="Women's Day Conference" />
-        </div>
-        
-        <h3>Breakfast Chaplin Ceremony</h3>
-        <div class="event-gallery">
-          <img src="Images/aug25/A8.jpg" alt="Chaplain Ceremony" />
-          <img src="Images/aug25/A9.jpg" alt="Chaplain Ceremony" />
-          <img src="Images/aug25/A6.jpg" alt="Chaplain Ceremony" />
-          <img src="Images/aug25/A5.jpg" alt="Chaplain Ceremony" />
-          <img src="Images/aug25/A7.jpg" alt="Chaplain Ceremony" />
-        </div>
-      </div>
-    </section>
+    <div style="text-align: center;">
+        <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weight: 700;></h1>
+    </div>
 
-    <section class="month">
-      <button class="accordion">July 2025</button>
-      <div class="panel">
-        <h3>Newly Appointed: Evangelist Nakane</h3>
-        <div class="event-gallery">
-          <img src="Images/july25/C6.jpg" alt="Evangelist Nakane Appointment" />
-          <img src="Images/july25/C7.jpg" alt="Evangelist Nakane Appointment" />
-          <img src="Images/aug25/A4.jpg" alt="Evangelist Nakane Appointment" />
-          <img src="Images/aug25/A3.jpg" alt="Evangelist Nakane Appointment" />
-        </div>
-      </div>
-    </section>
+    <!-- 7 Logos Strip -->
+   <div id="logo-strip">
+        <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 1" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L1';" />
+        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 2" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L2';" />
+        <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 3" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L3';" />
+        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 4" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L4';" />
+        <img src="Logos/Chaplainlogo1" alt="Church logo 5" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L5';" />
+        <img src="Logos/Chaplainlogo2" alt="Church logo 6" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L6';" />
+        <img src="Logos/Chaplainlogo3" alt="Church logo 7" onerror="this.onerror=null; this.src='https://placehold.co/65x65/004aad/ffffff?text=L7';" />
+    </div>
+  </header>
 
-  </main>
-  <script src="script.js"></script>
-  <script src="events.js"></script>
+  <div class="slideshow-container" id="slideshow">
+    <img src="https://placehold.co/1000x400/004aad/ffffff?text=UPCOMING+EVENT+1" alt="Upcoming Event 1" class="slide active" />
+    <img src="https://placehold.co/1000x400/004aad/ffffff?text=UPCOMING+EVENT+2" alt="Upcoming Event 2" class="slide" />
+    <div class="slide-caption">Upcoming Events</div>
+  </div>
+
+  <main class="events-content">
+    
+    <h1>Church Events & Highlights</h1>
+
+    <section class="month">
+      <button class="accordion">October 2025</button>
+      <div class="panel">
+        <h3>Men's Conference 2025: 04 October 2025</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/f7a700/004aad?text=Oct+25" alt="Men's Conference" />
+        </div>
+      </div>
+    </section>
+    
+    <section class="month">
+      <button class="accordion">September 2025</button>
+      <div class="panel">
+        <h3>Youth Robing Service</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/004aad/ffffff?text=Youth+1" alt="Youth Robing" />
+          <img src="https://placehold.co/150x150/004aad/ffffff?text=Youth+2" alt="Youth Robing" />
+          <img src="https://placehold.co/150x150/004aad/ffffff?text=Youth+3" alt="Youth Robing" />
+        </div>
+        
+        <h3>Love Celebrated: The Nakane's Wedding Celebration</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/royalblue/ffffff?text=Wedding+1" alt="Wedding Celebration" />
+          <img src="https://placehold.co/150x150/royalblue/ffffff?text=Wedding+2" alt="Wedding Celebration" />
+        </div>
+      </div>
+    </section>
+    
+    <section class="month">
+      <button class="accordion">August 2025</button>
+      <div class="panel">
+        <h3>Vaal Mokete. Celebrating 30 Years</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/f7a700/004aad?text=Mokete" alt="Vaal Mokete" />
+        </div>
+        
+        <h3>Newly Appointed: Lady Reverend Goitsemang Maphoto</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/004aad/ffffff?text=Rev+1" alt="Lady Reverend Appointment" />
+          <img src="https://placehold.co/150x150/004aad/ffffff?text=Rev+2" alt="Lady Reverend Appointment" />
+        </div>
+        
+        <h3>Women's Day Conference</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/royalblue/ffffff?text=Women+1" alt="Women's Day Conference" />
+          <img src="https://placehold.co/150x150/royalblue/ffffff?text=Women+2" alt="Women's Day Conference" />
+        </div>
+      </div>
+    </section>
+
+    <section class="month">
+      <button class="accordion">July 2025</button>
+      <div class="panel">
+        <h3>Newly Appointed: Evangelist Nakane</h3>
+        <div class="event-gallery">
+          <img src="https://placehold.co/150x150/f7a700/004aad?text=Evang+1" alt="Evangelist Nakane Appointment" />
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
+            const hamburger = document.getElementById('hamburger');
+            const menuPanel = document.getElementById('mobile-menu-panel');
+            const overlay = document.getElementById('menu-overlay');
+            const menuLinks = menuPanel.querySelectorAll('a');
+
+            const toggleMenu = () => {
+                const isOpen = menuPanel.classList.contains('open');
+                if (isOpen) {
+                    menuPanel.classList.remove('open');
+                    // Delay hiding overlay to allow CSS transition to finish
+                    setTimeout(() => overlay.style.display = 'none', 300);
+                    hamburger.setAttribute('aria-expanded', 'false');
+                } else {
+                    overlay.style.display = 'block';
+                    // Delay opening panel slightly after showing overlay
+                    setTimeout(() => menuPanel.classList.add('open'), 10);
+                    hamburger.setAttribute('aria-expanded', 'true');
+                }
+            };
+
+            if (hamburger && menuPanel) {
+                hamburger.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', toggleMenu); 
+                
+                // Close menu when a link is clicked
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+            
+            // --- Accordion Logic ---
+            var acc = document.getElementsByClassName("accordion");
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    } 
+                });
+            }
+            
+            // --- Slideshow Logic ---
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slideshow-container .slide');
+
+            function showSlides() {
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].classList.remove('active');
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                slides[slideIndex-1].classList.add('active');
+                setTimeout(showSlides, 4000); // Change image every 4 seconds
+            }
+            
+            if (slides.length > 0) {
+                showSlides();
+            }
+        });
+    </script>
 </body>
 </html>
