@@ -6,9 +6,7 @@
     <meta name="keywords" content="church, faith, mission, gospel, worship, bible, St John's, Apostolic, South Africa, chaplaincy" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>International St John's Apostolic Faith Mission Church</title>
-    <!-- Poppins Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
@@ -21,6 +19,7 @@
             --light-bg: #f4f6f9;
             --white: white;
             --text-color: #333;
+            --header-height: 80px; /* Define fixed height for easier calculation */
         }
 
         * {
@@ -31,12 +30,12 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-bg);
             margin: 0;
-            padding-top: 100px; /* Space for the fixed header/nav */
+            /* Use the variable for a cleaner dependency */
+            padding-top: var(--header-height);
             color: var(--text-color);
         }
 
         /* --- HEADER AND LOGOS --- */
-                /* --- HEADER AND LOGOS --- */
         #church-header {
             display: flex;
             justify-content: space-between;
@@ -48,9 +47,25 @@
             top: 0;
             left: 0;
             width: 100%;
+            height: var(--header-height); /* Set height explicitly */
             z-index: 1000;
         }
 
+        /* Added new branding element */
+        #main-branding {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-right: 10px;
+            display: block;
+            text-align: center;
+            max-width: 150px;
+        }
+
+        /* Corrected the logo strip selector to match the HTML ID */
         #logo-strip {
             display: flex;
             justify-content: center;
@@ -70,21 +85,23 @@
         }
         
         #logo-strip img:hover {
-             transform: scale(1.05);
+            transform: scale(1.05);
         }
         
-        /* Hamburger Icon Styling */
-        #hamburger {
+        /* Hamburger Icon Styling (renamed from #hamburger) */
+        #hamburger-btn {
             padding: 5px;
             cursor: pointer;
             transition: color 0.2s;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-color); /* Ensure the icon is visible */
         }
 
-        #hamburger:hover i {
-            color: var(--secondary-color) !important;
+        #hamburger-btn:hover {
+            color: var(--secondary-color);
         }
-
-        
 
         /* --- NEW SIDE NAVIGATION BAR (Off-Canvas Menu) --- */
         #side-menu {
@@ -155,14 +172,20 @@
         }
 
         /* --- MEDIA QUERIES for Tablet and Mobile --- */
+        @media (max-width: 900px) {
+             /* Hide main branding when screen gets too narrow */
+            #main-branding {
+                display: none;
+            }
+        }
         @media (max-width: 768px) {
             #church-header img {
                 max-height: 50px;
                 margin: 0 2px;
             }
             
-            /* Only show a couple of logos on small screen */
-            .logo-wrapper img:nth-child(n+3) { /* Hide logo 3 and onwards */
+            /* Corrected selector: Only show a couple of logos on small screen */
+            #logo-strip img:nth-child(n+3) { /* Hide logo 3 and onwards */
                 display: none;
             }
         }
@@ -170,7 +193,10 @@
         @media (max-width: 480px) {
             /* Slightly reduce top padding since the header is smaller */
             body {
-                padding-top: 80px;
+                padding-top: 70px;
+            }
+            :root {
+                --header-height: 70px;
             }
         }
 
@@ -198,7 +224,8 @@
             width: 300px;
             height: 300px;
             object-fit: cover;
-            
+            /* Border-radius was missing */
+            border-radius: 50%; 
             border: 5px solid var(--secondary-color);
             margin-bottom: 15px;
         }
@@ -216,6 +243,10 @@
             .leader {
                 flex-basis: 100%;
             }
+            .leader img {
+                width: 200px;
+                height: 200px;
+            }
         }
 
         /* ====================================
@@ -228,318 +259,4 @@
             margin: auto;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            height: 400px; /* ADJUSTED: Smaller height for desktop */
-        }
-
-        .slide {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .slide.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures image covers the container */
-            border-radius: initial; /* Ensure images are not circular */
-        }
-
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            color: var(--white);
-            padding: 15px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        /* Welcome Section */
-        #welcome-section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        #welcome-section h2 {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        #welcome-section p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        /* Quick Links/Cards Section (Included for context, but not in current HTML) */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none; 
-            color: var(--text-color);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .card-icon {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 20px 0;
-            font-size: 2rem;
-        }
-
-        .card-content {
-            padding: 20px 15px;
-        }
-
-        .card-content h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .card-content p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* Media query for homepage slideshow */
-        @media (max-width: 768px) {
-            .slideshow-container {
-                height: 250px; /* Shorter height on mobile */
-            }
-            .slide-caption {
-                font-size: 1rem;
-                padding: 10px;
-            }
-            #welcome-section {
-                padding: 20px;
-                margin: 20px auto;
-            }
-            .card-grid {
-                gap: 20px;
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* The rest of the page-specific CSS is kept here for completeness, though the current HTML only shows the homepage. */
-
-        /* ====================================
-        CHAPLAINCY PAGE STYLING
-        ==================================== */
-        .chaplaincy-content {
-            max-width: 900px;
-            margin: 20px auto 50px;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .chaplaincy-content h2 {
-            color: royalblue;
-            font-size: 1.6rem;
-            margin-top: 30px;
-            border-left: 5px solid royalblue;
-            padding-left: 15px;
-            margin-bottom: 15px;
-        }
-        .chaplaincy-content p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        .service-list {
-            list-style-type: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .service-list li {
-            background: #f0f4ff;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: 500;
-            color: #333;
-            border-left: 5px solid royalblue;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        @media (max-width: 600px) {
-            .service-list {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* ... (The rest of the CSS blocks for Events, Core Values, Mission, etc., are omitted here for brevity but were included in the provided CSS and remain valid) ... */
-    </style>
-</head>
-<body>
-
-<!-- Mobile Side Menu (Hidden by default) -->
-<div id="side-menu">
-    <!-- Close Button -->
-    <button id="close-menu-btn" style="position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 2rem; color: white; cursor: pointer;">
-        &times;
-    </button>
-    <!-- Navigation Links moved here from the header -->
-    <a href="index.html"><i class="fas fa-home"></i> HOME PAGE</a>
-    <a href="mission.html"><i class="fas fa-bullseye"></i> MISSION & VISION</a>
-    <a href="values.html"><i class="fas fa-hand-holding-heart"></i> OUR CORE VALUES</a>
-    <a href="chaplaincy.html"><i class="fas fa-cross"></i> CHAPLAINCY</a>
-    <a href="events.html"><i class="fas fa-calendar-alt"></i> EVENTS</a>
-    <a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a>
-    <a href="bibleacademy.html"><i class="fas fa-book-open"></i> BIBLE ACADEMY</a>
-    <a href="newsletters.html"><i class="fas fa-envelope-open-text"></i> NEWSLETTERS</a>
-    <a href="contact.html"><i class="fas fa-map-marker-alt"></i> CONTACT US</a>
-    <div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-        &copy; 2025 Int. St. John's AFM Church
-    </div>
-</div>
-
-<!-- Overlay for when the menu is open -->
-<div id="main-overlay"></div>
-
-<!-- FIXED HEADER (Now contains both button and logos) -->
-<header id="church-header">
-    <button id="hamburger-btn" aria-label="Open Menu">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <div class="logo-wrapper">
-        <!-- Replaced local paths with placeholders and kept the styles for responsiveness -->
-        <img src="Logos/IMG-20250616-WA0066~2.jpg"alt="Church logo 2" />
-        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 3" />
-        <img src="Logos/IMG-20250616-WA0066~5.jpg"  alt="Church logo 4" />
-        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 5" class="placeholder-logo" />
-        <img src="Logos/Chaplainlogo1" alt="Church logo 6" class="placeholder-logo" />
-        <img src="Logos/Chaplainlogo2" alt="Church logo 7" class="placeholder-logo" />
-        <img src="Logos/Chaplainlogo3" alt="Church logo 7" class="placeholder-logo" />
-    </div>
-</header>
-<!-- SLIDESHOW CONTAINER -->
-<div class="slideshow-container" id="slideshow">
-    <div class="slide active">
-         <img src="" alt="Slide 1" />
-        <div class="slide-caption">BISHOP ORDINATION 09 NOVEMBER 2025</div>
-    </div>
-    <div class="slide">
-        <img src="" alt="Slide 2" />
-        <div class="slide-caption">ANNUAL FEAST 23 NOVMBER 2025</div>
-    </div>
-   
-</div>
-
-<main>
-    <section id="welcome-section">
-        <h1>Welcome to International Saint John's Apostolic Faith Mission Church!</h1>
-        <p>International Saint John's Apostolic Faith Mission Church is a non-profit apostolic church dedicated to spiritual growth and community support. We are more than just a place of worship. We strive to be a welcoming family where all are accepted and encouraged to grow in their faith.</p>
-        <p>We offer spiritual consultations every **Saturday** at 10 AM, where you can receive guidance, prayer, and personal ministry. On **Sundays**, we gather for a powerful, spirit-filled worship service filled with praise, preaching, and communion.</p>
-        <p>We would be honored to welcome you into our church family. When you arrive, feel free to ask for Bishop M. Gcebe or LadyBishop (Dr) N. Gcebe, our dedicated church leaders who are always ready to meet and greet new members.</p>
-    </section>
-
-    <!-- LEADERSHIP PROFILES (Using placeholders for images) -->
-    <div class="leaders-container">
-        <div class="leader">
-            <img src="Images/Baba Bishop2.jpg" alt="Bishop M. Gcebe" />
-            <p>CHAPLAIN & BISHOP M. GCEBE</p>
-        </div>
-        <div class="leader">
-            <img src="Logos/lady bishop.jpg" alt="Lady Bishop N. Gcebe" />
-            <p>LADYBISHOP (DR) N. GCEBE</p>
-        </div>
-    </div>
-</main>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const sideMenu = document.getElementById('side-menu');
-        const mainOverlay = document.getElementById('main-overlay');
-        const slideshow = document.getElementById('slideshow');
-        let slideIndex = 0;
-
-        // --- Side Menu and Overlay Functions ---
-        function toggleMenu(isOpen) {
-            if (isOpen) {
-                sideMenu.classList.add('open');
-                mainOverlay.classList.add('visible');
-                // Optional: prevent background scrolling when menu is open
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                sideMenu.classList.remove('open');
-                mainOverlay.classList.remove('visible');
-                document.body.style.overflow = '';
-            }
-        }
-
-        // Event listeners for menu control
-        hamburgerBtn.addEventListener('click', () => toggleMenu(true));
-        closeMenuBtn.addEventListener('click', () => toggleMenu(false));
-        mainOverlay.addEventListener('click', () => toggleMenu(false));
-
-        // --- Slideshow Functionality ---
-        function showSlides() {
-            const slides = slideshow.getElementsByClassName('slide');
-            if (slides.length === 0) return; // Exit if no slides are found
-
-            // Hide all slides
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-            }
-            
-            // Increment slide index and loop back
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
-            
-            // Show the current slide
-            slides[slideIndex - 1].classList.add('active');
-            
-            // Change image every 5 seconds
-            setTimeout(showSlides, 5000); 
-        }
-
-        // Start the slideshow after a short delay to ensure DOM is ready
-        setTimeout(showSlides, 100); 
-    });
-</script>
-</body>
-</html>
-
+            box-shadow:
