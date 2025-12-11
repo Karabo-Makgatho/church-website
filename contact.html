@@ -37,7 +37,7 @@
         }
 
         /* --- HEADER AND LOGOS --- */
-        #church-header {
+       #church-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -102,6 +102,56 @@
 
         #hamburger-btn:hover {
             color: var(--secondary-color);
+        }
+
+        /* --- NEW SIDE NAVIGATION BAR (Off-Canvas Menu) --- */
+        #side-menu {
+            height: 100%;
+            width: 280px; /* Width of the sliding menu */
+            position: fixed;
+            z-index: 1050;
+            top: 0;
+            left: -280px; /* Hidden state: Off-screen to the left */
+            background-color: var(--primary-color);
+            overflow-y: auto; 
+            padding-top: 80px; /* Space from the top edge */
+            transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #side-menu.open {
+            left: 0; /* Open state: Slides into view */
+        }
+
+        #side-menu a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: var(--white);
+            display: block;
+            transition: background-color 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+        }
+
+        #side-menu a:hover, #side-menu a.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Optional: Overlay to dim background when menu is open */
+        #main-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1040;
+            display: none;
+            cursor: pointer;
+        }
+        #main-overlay.visible {
+            display: block;
         }
 
         /* ====================================
@@ -441,9 +491,7 @@
         <i class="fas fa-bars"></i>
     </div>
     
-    <div style="text-align: center; flex-grow: 1; margin: 0 10px;">
-        <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weight: 700;"></h1>
-    </div>
+
 
     <!-- 7 Logos Strip -->
    <div id="logo-strip">
