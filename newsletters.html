@@ -184,46 +184,7 @@
             margin: 20px auto;
         }
 
-        /* Global Heading Style */
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            font-weight: 700;
-        }
-
-        /* --- MEDIA QUERIES for Tablet and Mobile --- */
-        @media (max-width: 900px) {
-             /* Hide main branding when screen gets too narrow */
-            #main-branding {
-                display: none;
-            }
-        }
-        @media (max-width: 768px) {
-            #church-header img {
-                max-height: 50px;
-                margin: 0 2px;
-            }
-            
-            /* Corrected selector: Only show a couple of logos on small screen */
-            #logo-strip img:nth-child(n+3) { /* Hide logo 3 and onwards */
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Slightly reduce top padding since the header is smaller */
-            body {
-                padding-top: 70px;
-            }
-            :root {
-                --header-height: 70px;
-            }
-        }
-
+    
         /* ====================================
         NEWSLETTER SPECIFIC STYLES (Collapsible List)
         ==================================== */
