@@ -37,6 +37,7 @@
         }
 
         /* --- HEADER AND LOGOS (Unified Style) --- */
+       /* --- HEADER AND LOGOS (Copied from events.html) --- */
         #church-header {
             display: flex;
             justify-content: space-between;
@@ -73,126 +74,18 @@
             transform: scale(1.05);
         }
         
-        #hamburger {
-            padding: 5px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        #hamburger:hover i {
-            color: var(--secondary-color) !important;
-        }
-
-        /* --- SLIDING MENU STYLES (Unified Style) --- */
-        #menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1050;
-            display: none;
-            transition: opacity 0.3s;
-        }
-
-        #mobile-menu-panel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100vh;
-            background-color: var(--primary-color);
-            z-index: 1060;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-            padding-top: 20px;
-            overflow-y: auto;
-        }
-
-        #mobile-menu-panel.open {
-            transform: translateX(0);
-        }
-        
-        #mobile-menu-panel nav {
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-        }
-        
-        #mobile-menu-panel a {
-            color: var(--white);
-            padding: 12px 15px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-        }
-
-        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-            /* --- HEADER AND LOGOS --- (Adjusted for Hamburger) */
-        #church-header {
-            display: flex;
-            justify-content: space-between; /* Space out hamburger, title, logos */
-            align-items: center;
-            background-color: var(--white);
-            padding: 5px 20px;
-            border-bottom: 1px solid #ddd;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        #logo-strip {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Allow logos to shrink on small screens */
-            flex-grow: 1; 
-            margin: 0 10px;
-        }
-
-        #logo-strip img {
-            max-height: 65px;
-            width: auto;
-            margin: 0 4px;
-            object-fit: contain;
-            border-radius: 8px;
-            transition: transform 0.2s;
-            display: block;
-        }
-        
-        #logo-strip img:hover {
-             transform: scale(1.05);
-        }
-        
         /* Hamburger Icon Styling */
         #hamburger {
             padding: 5px;
             cursor: pointer;
             transition: color 0.2s;
-            min-width: 30px;
-        }
-
-        #hamburger i {
-            color: var(--primary-color); 
-            font-size: 28px;
         }
 
         #hamburger:hover i {
             color: var(--secondary-color) !important;
         }
-        
-        /* --- SLIDING MENU STYLES --- */
+
+        /* --- SLIDING MENU STYLES (Copied from events.html) --- */
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -247,7 +140,6 @@
             background-color: var(--secondary-color);
             color: var(--white);
         }
-
 
         /* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
         main {
@@ -704,6 +596,7 @@
       
 </body>
 </html>
+
 
 
 
