@@ -38,6 +38,7 @@
 
         /* --- HEADER AND LOGOS --- */
        /* --- HEADER AND LOGOS --- */
+        /* --- HEADER AND LOGOS --- */
         #church-header {
             display: flex;
             justify-content: space-between;
@@ -173,8 +174,35 @@
             font-weight: 700;
         }
 
-      
-     
+        /* --- MEDIA QUERIES for Tablet and Mobile --- */
+        @media (max-width: 900px) {
+             /* Hide main branding when screen gets too narrow */
+            #main-branding {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            #church-header img {
+                max-height: 50px;
+                margin: 0 2px;
+            }
+            
+            /* Corrected selector: Only show a couple of logos on small screen */
+            #logo-strip img:nth-child(n+3) { /* Hide logo 3 and onwards */
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Slightly reduce top padding since the header is smaller */
+            body {
+                padding-top: 70px;
+            }
+            :root {
+                --header-height: 70px;
+            }
+        }
+
  
         /* ====================================
         BASE & GLOBAL STYLES (Reused from Gallery)
@@ -590,6 +618,7 @@
     </script>
 </body>
 </html>
+
 
 
 
