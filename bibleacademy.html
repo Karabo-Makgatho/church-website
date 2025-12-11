@@ -444,42 +444,42 @@
     </style>
 </head>
 <body>
-
- <body>
-    
-  <header id="church-header">
-    <div id="hamburger" aria-label="Open Navigation Menu" role="button" tabindex="0">
-        <i class="fas fa-bars" style="color: var(--primary-color); font-size: 28px;"></i>
+<div id="side-menu">
+    <button id="close-menu-btn" aria-label="Close Menu" style="position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 2rem; color: white; cursor: pointer;">
+        &times;
+    </button>
+    <a href="index.html" class="active"><i class="fas fa-home"></i> HOME PAGE</a>
+    <a href="mission.html"><i class="fas fa-bullseye"></i> MISSION & VISION</a>
+    <a href="values.html"><i class="fas fa-hand-holding-heart"></i> OUR CORE VALUES</a>
+    <a href="chaplaincy.html"><i class="fas fa-cross"></i> CHAPLAINCY</a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> EVENTS</a>
+    <a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a>
+    <a href="bibleacademy.html"><i class="fas fa-book-open"></i> BIBLE ACADEMY</a>
+    <a href="newsletters.html"><i class="fas fa-envelope-open-text"></i> NEWSLETTERS</a>
+    <a href="contact.html"><i class="fas fa-map-marker-alt"></i> CONTACT US</a>
+    <div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+        &copy; 2025 Int. St. John's AFM Church
     </div>
-    
-    <div style="text-align: center;">
-        <h1 style="color: var(--primary-color); font-size: 1.2rem; margin: 0; font-weigh:70></h1>
-    </div>
+</div>
 
-    <!-- 7 Logos Strip -->
-    
- <!-- Mobile Menu Overlay -->
-    <div id="menu-overlay" role="button" aria-label="Close Menu"></div>
-    
-    <!-- Mobile Menu Panel (Slides from left) -->
-    <div id="mobile-menu-panel">
-        <div class="menu-header" style="padding: 15px; border-bottom: 2px solid var(--accent-color); text-align: center;">
-            <h2 style="color: var(--white); font-weight: 700; font-size: 1.5rem"></h2>
-        </div>
-        <nav>
-            <a href="index.html"><i class="fas fa-home" style="margin-right: 10px;"></i>HOME PAGE</a>
-            <a href="mission.html"><i class="fas fa-cross" style="margin-right: 10px;"></i>MISSION & VISION</a>
-            <a href="values.html"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>OUR CORE VALUES</a>
-            <a href="chaplaincy.html"><i class="fas fa-hands-helping" style="margin-right: 10px;"></i>CHAPLAINCY</a>
-            <a href="events.html" class="active"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>EVENTS</a>
-            <a href="gallery.html"><i class="fas fa-images" style="margin-right: 10px;"></i>GALLERY</a>
-            <a href="bibleacademy.html"><i class="fas fa-book" style="margin-right: 10px;"></i>BIBLE ACADEMY</a>
-            <a href="newsletters.html"><i class="fas fa-file-pdf" style="margin-right: 10px;"></i>NEWSLETTERS</a>
-            <a href="contact.html"><i class="fas fa-envelope" style="margin-right: 10px;"></i>CONTACT US</a>
-        </nav>
-    </div>
-  </header>
+<div id="main-overlay"></div>
 
+<header id="church-header">
+    <button id="hamburger-btn" aria-label="Open Menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="logo-strip">
+        <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 2" />
+        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 3" />
+        <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 4" />
+        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 5" />
+        <img src="Logos/Chaplainlogo1.jpg" alt="Chaplaincy logo 1" />
+        <img src="Logos/Chaplainlogo2.jpg" alt="Chaplaincy logo 2" />
+        <img src="Logos/Chaplainlogo3.jpg" alt="Chaplaincy logo 3" />
+        <img src="Logos/Chaplainlogo4.jpg" alt="Chaplaincy logo 4" />
+    </div>
+</header>
    
   
   <main class="academy-main-content">
@@ -607,8 +607,10 @@
     
     }); // <-- Added missing closure for DOMContentLoaded
     </script>
+      
 </body>
 </html>
+
 
 
 
