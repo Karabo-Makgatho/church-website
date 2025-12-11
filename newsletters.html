@@ -58,9 +58,7 @@
         }
 
 
-        /* --- HEADER AND LOGOS --- */
-         /* --- HEADER AND LOGOS --- */
-         /* --- HEADER AND LOGOS --- */
+        /* --- HEADER AND LOGOS (Unified Style) --- */
         #church-header {
             display: flex;
             justify-content: space-between;
@@ -72,25 +70,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: var(--header-height); /* Set height explicitly */
             z-index: 1000;
         }
 
-        /* Added new branding element */
-        #main-branding {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            text-transform: uppercase;
-            line-height: 1.2;
-            margin-right: 10px;
-            display: block;
-            text-align: center;
-            max-width: 150px;
-        }
-
-        /* Corrected the logo strip selector to match the HTML ID */
         #logo-strip {
             display: flex;
             justify-content: center;
@@ -113,117 +95,71 @@
             transform: scale(1.05);
         }
         
-        /* Hamburger Icon Styling (renamed from #hamburger) */
-        #hamburger-btn {
+        #hamburger {
             padding: 5px;
             cursor: pointer;
             transition: color 0.2s;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary-color); /* Ensure the icon is visible */
         }
 
-        #hamburger-btn:hover {
-            color: var(--secondary-color);
+        #hamburger:hover i {
+            color: var(--secondary-color) !important;
         }
 
-        /* --- NEW SIDE NAVIGATION BAR (Off-Canvas Menu) --- */
-        #side-menu {
-            height: 100%;
-            width: 280px; /* Width of the sliding menu */
-            position: fixed;
-            z-index: 1050;
-            top: 0;
-            left: -280px; /* Hidden state: Off-screen to the left */
-            background-color: var(--primary-color);
-            overflow-y: auto; 
-            padding-top: 80px; /* Space from the top edge */
-            transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-        }
-
-        #side-menu.open {
-            left: 0; /* Open state: Slides into view */
-        }
-
-        #side-menu a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            color: var(--white);
-            display: block;
-            transition: background-color 0.3s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 500;
-        }
-
-        #side-menu a:hover, #side-menu a.active {
-            background-color: var(--secondary-color);
-        }
-
-        /* Optional: Overlay to dim background when menu is open */
-        #main-overlay {
+        /* --- SLIDING MENU STYLES (Unified Style) --- */
+        #menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1040;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1050;
             display: none;
-            cursor: pointer;
-        }
-        #main-overlay.visible {
-            display: block;
+            transition: opacity 0.3s;
         }
 
-        /* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
-        main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
+        #mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--primary-color);
+            z-index: 1060;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            padding-top: 20px;
+            overflow-y: auto;
         }
 
-        /* Global Heading Style */
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            font-weight: 700;
+        #mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+        
+        #mobile-menu-panel nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        
+        #mobile-menu-panel a {
+            color: var(--white);
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
         }
 
-        /* --- MEDIA QUERIES for Tablet and Mobile --- */
-        @media (max-width: 900px) {
-             /* Hide main branding when screen gets too narrow */
-            #main-branding {
-                display: none;
-            }
+        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
         }
-        @media (max-width: 768px) {
-            #church-header img {
-                max-height: 50px;
-                margin: 0 2px;
-            }
-            
-            /* Corrected selector: Only show a couple of logos on small screen */
-            #logo-strip img:nth-child(n+3) { /* Hide logo 3 and onwards */
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Slightly reduce top padding since the header is smaller */
-            body {
-                padding-top: 70px;
-            }
-            :root {
-                --header-height: 70px;
-            }
-        }
+        
 
         /* ====================================
         NEWSLETTER SPECIFIC STYLES (Collapsible List)
