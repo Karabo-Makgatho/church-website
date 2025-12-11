@@ -10,6 +10,100 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
+
+         /* ====================================
+        BASE & GLOBAL STYLES (Applies to all pages)
+        ==================================== */
+        :root {
+            --primary-color: #004aad; /* Dark Blue */
+            --secondary-color: royalblue; /* Bright Blue */
+            --light-bg: #f4f6f9;
+            --white: white;
+            --text-color: #333;
+            --header-height: 80px; /* Define fixed height for easier calculation */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            /* Use the variable for a cleaner dependency */
+            padding-top: var(--header-height);
+            color: var(--text-color);
+        }
+
+        /* --- HEADER AND LOGOS --- */
+        #church-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height); /* Set height explicitly */
+            z-index: 1000;
+        }
+
+        /* Added new branding element */
+        #main-branding {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-right: 10px;
+            display: block;
+            text-align: center;
+            max-width: 150px;
+        }
+
+        /* Corrected the logo strip selector to match the HTML ID */
+        #logo-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        #logo-strip img {
+            max-height: 65px;
+            width: auto;
+            margin: 0 4px;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: block;
+        }
+        
+        #logo-strip img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Hamburger Icon Styling (renamed from #hamburger) */
+        #hamburger-btn {
+            padding: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-color); /* Ensure the icon is visible */
+        }
+
+        #hamburger-btn:hover {
+            color: var(--secondary-color);
+        }
+
         /* ====================================
         BASE & GLOBAL STYLES (Reused from Gallery)
         ==================================== */
@@ -544,5 +638,6 @@
     </script>
 </body>
 </html>
+
 
 
