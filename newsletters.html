@@ -1,491 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Download monthly newsletters and stay updated with church news and events." />
-  <meta name="keywords" content="church, faith, mission, gospel, worship, bible, events, St John's, Apostolic, South Africa, newsletters, downloads" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Newsletters - International St John's Apostolic Faith Mission Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            margin: 0;
-            padding-top: 85px; /* Space for fixed header only */
-            color: var(--text-color);
-        }
-        
-        main {
-            padding: 20px;
-            max-width: 900px; 
-            margin: 20px auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .description-text {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-
-           /* ====================================
-        BASE & GLOBAL STYLES (Applies to all pages)
-        ==================================== */
-        :root {
-            --primary-color: #004aad; /* Dark Blue */
-            --secondary-color: royalblue; /* Bright Blue */
-            --light-bg: #f4f6f9;
-            --white: white;
-            --text-color: #333;
-            --header-height: 80px; /* Define fixed height for easier calculation */
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            margin: 0;
-            /* Use the variable for a cleaner dependency */
-            padding-top: var(--header-height);
-            color: var(--text-color);
-        }
-
-        /* --- HEADER AND LOGOS --- */
-        #church-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--white);
-            padding: 5px 20px;
-            border-bottom: 1px solid #ddd;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height); /* Set height explicitly */
-            z-index: 1000;
-        }
-
-        /* Added new branding element */
-        #main-branding {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            text-transform: uppercase;
-            line-height: 1.2;
-            margin-right: 10px;
-            display: block;
-            text-align: center;
-            max-width: 150px;
-        }
-
-        /* Corrected the logo strip selector to match the HTML ID */
-        #logo-strip {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            margin: 0 10px;
-        }
-
-        #logo-strip img {
-            max-height: 65px;
-            width: auto;
-            margin: 0 4px;
-            object-fit: contain;
-            border-radius: 8px;
-            transition: transform 0.2s;
-            display: block;
-        }
-        
-        #logo-strip img:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Hamburger Icon Styling (renamed from #hamburger) */
-        #hamburger-btn {
-            padding: 5px;
-            cursor: pointer;
-            transition: color 0.2s;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary-color); /* Ensure the icon is visible */
-        }
-
-        #hamburger-btn:hover {
-            color: var(--secondary-color);
-        }
-
-        /* --- NEW SIDE NAVIGATION BAR (Off-Canvas Menu) --- */
-        #side-menu {
-            height: 100%;
-            width: 280px; /* Width of the sliding menu */
-            position: fixed;
-            z-index: 1050;
-            top: 0;
-            left: -280px; /* Hidden state: Off-screen to the left */
-            background-color: var(--primary-color);
-            overflow-y: auto; 
-            padding-top: 80px; /* Space from the top edge */
-            transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-        }
-
-        #side-menu.open {
-            left: 0; /* Open state: Slides into view */
-        }
-
-        #side-menu a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            color: var(--white);
-            display: block;
-            transition: background-color 0.3s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 500;
-        }
-
-        #side-menu a:hover, #side-menu a.active {
-            background-color: var(--secondary-color);
-        }
-
-        /* Optional: Overlay to dim background when menu is open */
-        #main-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1040;
-            display: none;
-            cursor: pointer;
-        }
-        #main-overlay.visible {
-            display: block;
-        }
-
-
-            /* --- HEADER AND LOGOS --- (Adjusted for Hamburger) */
-        #church-header {
-            display: flex;
-            justify-content: space-between; /* Space out hamburger, title, logos */
-            align-items: center;
-            background-color: var(--white);
-            padding: 5px 20px;
-            border-bottom: 1px solid #ddd;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        #logo-strip {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Allow logos to shrink on small screens */
-            flex-grow: 1; 
-            margin: 0 10px;
-        }
-
-        #logo-strip img {
-            max-height: 65px;
-            width: auto;
-            margin: 0 4px;
-            object-fit: contain;
-            border-radius: 8px;
-            transition: transform 0.2s;
-            display: block;
-        }
-        
-        #logo-strip img:hover {
-             transform: scale(1.05);
-        }
-        
-        /* Hamburger Icon Styling */
-        #hamburger {
-            padding: 5px;
-            cursor: pointer;
-            transition: color 0.2s;
-            min-width: 30px;
-        }
-
-        #hamburger i {
-            color: var(--primary-color); 
-            font-size: 28px;
-        }
-
-        #hamburger:hover i {
-            color: var(--secondary-color) !important;
-        }
-        
-        /* --- SLIDING MENU STYLES --- */
-        #menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1050;
-            display: none;
-            transition: opacity 0.3s;
-        }
-
-        #mobile-menu-panel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100vh;
-            background-color: var(--primary-color);
-            z-index: 1060;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-            padding-top: 20px;
-            overflow-y: auto;
-        }
-
-        #mobile-menu-panel.open {
-            transform: translateX(0);
-        }
-        
-        /* Menu Content Styles */
-        #mobile-menu-panel nav {
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-        }
-        
-        #mobile-menu-panel a {
-            color: var(--white);
-            padding: 12px 15px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-        }
-
-        #mobile-menu-panel a:hover, #mobile-menu-panel a.active {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-
-        /* --- MAIN CONTENT CONTAINER STYLES (Used for most content pages) --- */
-        main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        /* Global Heading Style */
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            font-weight: 700;
-        }
-
-        /* --- MEDIA QUERIES for Tablet and Mobile --- */
-        @media (max-width: 900px) {
-             /* Hide main branding when screen gets too narrow */
-            #main-branding {
-                display: none;
-            }
-        }
-        @media (max-width: 768px) {
-            #church-header img {
-                max-height: 50px;
-                margin: 0 2px;
-            }
-            
-            /* Corrected selector: Only show a couple of logos on small screen */
-            #logo-strip img:nth-child(n+3) { /* Hide logo 3 and onwards */
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Slightly reduce top padding since the header is smaller */
-            body {
-                padding-top: 70px;
-            }
-            :root {
-                --header-height: 70px;
-            }
-        }
-
-        /* ====================================
-        NEWSLETTER SPECIFIC STYLES (Collapsible List)
-        ==================================== */
-        
-        details {
-            margin-bottom: 15px;
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        /* ... (rest of newsletter styles remain the same) ... */
-        summary {
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            transition: background-color 0.2s;
-            display: block; 
-            user-select: none;
-            border-radius: 8px;
-        }
-        
-        summary:hover {
-            background-color: var(--light-bg);
-        }
-        
-        summary::marker {
-            content: "";
-        }
-
-        summary::before {
-            content: "\25B6";
-            margin-right: 15px;
-            color: var(--accent-color);
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        
-        details[open] > summary::before {
-            content: "\25BC";
-        }
-        
-        .newsletter-content {
-            padding: 10px 20px 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .newsletter-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .newsletter-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
-        }
-        
-        .newsletter-list li:last-child {
-            border-bottom: none;
-        }
-
-        .newsletter-list a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            display: block;
-            padding: 5px 0;
-            transition: color 0.2s;
-        }
-        
-        .newsletter-list a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        
-        .newsletter-list a::before {
-            content: "\f0ed";
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--accent-color);
-            margin-right: 10px;
-        }
-
-
-    </style>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Saint John Apostolic Faith Misson Church</title>
+    <link rel="stylesheet" href="style.css">
+    ,<script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+IT+Moderna:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Manufacturing+Consent&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <section class="headerr">
+            <nav>
+                <a href="index.html"><img src="Logos/IMG_20250616_185014_788.jpg" alt=""></a>
+                <div class="nav-links" id="navLinks">
+                    <i class="fa fa-times" onclick="hideMenu()"></i>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="newsletters.html">NEWSLETTERS</a></li>
+                        <li><a href="chaplaincy.html">CHAPLAINCY</a></li>
+                        <li><a href="gallery.html">GALLERY</a></li>
+                        <li><a href="bibleacademy.html">BIBLE ACADEMY</a></li>
+                        <li><a href="calender.html">CALENDAR</a></li>
+                        <li><a href="contactus.html">CONTACT US</a></li>
+                    </ul>
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
+            </nav>  
 
 </head>
-<body>
-
-<div id="side-menu">
-    <button id="close-menu-btn" aria-label="Close Menu" style="position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 2rem; color: white; cursor: pointer;">
-        &times;
-    </button>
-    <a href="index.html" class="active"><i class="fas fa-home"></i> HOME PAGE</a>
-    <a href="mission.html"><i class="fas fa-bullseye"></i> MISSION & VISION</a>
-    <a href="values.html"><i class="fas fa-hand-holding-heart"></i> OUR CORE VALUES</a>
-    <a href="chaplaincy.html"><i class="fas fa-cross"></i> CHAPLAINCY</a>
-    <a href="events.html"><i class="fas fa-calendar-alt"></i> EVENTS</a>
-    <a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a>
-    <a href="bibleacademy.html"><i class="fas fa-book-open"></i> BIBLE ACADEMY</a>
-    <a href="newsletters.html"><i class="fas fa-envelope-open-text"></i> NEWSLETTERS</a>
-    <a href="contact.html"><i class="fas fa-map-marker-alt"></i> CONTACT US</a>
-    <div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-        &copy; 2025 Int. St. John's AFM Church
-    </div>
-</div>
-
-<div id="main-overlay"></div>
-
-<header id="church-header">
-    <button id="hamburger-btn" aria-label="Open Menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-    </button>
-    <div id="logo-strip">
-        <img src="Logos/IMG-20250616-WA0066~2.jpg" alt="Church logo 2" />
-        <img src="Logos/IMG_20250616_185014_788.jpg" alt="Church logo 3" />
-        <img src="Logos/IMG-20250616-WA0066~5.jpg" alt="Church logo 4" />
-        <img src="Logos/IMG_20250617_100228_034.jpg" alt="Church logo 5" />
-        <img src="Logos/Chaplainlogo1.jpg" alt="Chaplaincy logo 1" />
-        <img src="Logos/Chaplainlogo2.jpg" alt="Chaplaincy logo 2" />
-        <img src="Logos/Chaplainlogo3.jpg" alt="Chaplaincy logo 3" />
-        <img src="Logos/Chaplainlogo4.jpg" alt="Chaplaincy logo 4" />
-    </div>
-</header>
-
-
-
   <main>
     <h1>Newsletters</h1>
     <p class="description-text">Download our monthly newsletters and stay updated with church news, special messages, and events.</p>
 
     <!-- The original HTML structure is converted to modern <details>/<summary> for collapsibility -->
-    <details open>
-        <summary>September 2025</summary>
+         <details>
+        <summary>January 2026</summary>
         <div class="newsletter-content">
             <ul class="newsletter-list">
                 <li><a href="Images/aug25/Women's Conference Program.pdf" download>
+                   Baptism & Cleansing 
+                </a></li>
+            </ul>
+        </div>
+    </details>
+        
+        <details>
+        <summary>December 2025</summary>
+        <div class="newsletter-content">
+            <ul class="newsletter-list">
+                <li><a href="Images/aug25/Women's Conference Program.pdf" download>
+                    Happy Holidays!
+                </a></li>
+            </ul>
+        </div>
+    </details>
+        
+        <details>
+        <summary>November 2025</summary>
+        <div class="newsletter-content">
+            <ul class="newsletter-list">
+                <li><a href="Images/aug25/Women's Conference Program.pdf" download>
+                    The Ntsana's Vow Renewal
+                </a></li>
+            </ul>
+              <ul class="newsletter-list">
+                <li><a href="Images/aug25/Women's Conference Program.pdf" download>
+                   The Bishop Ordination Ceremony
+                </a></li>
+        </div>
+    </details>
+        
+        <details>
+        <summary>October 2025</summary>
+        <div class="newsletter-content">
+            <ul class="newsletter-list">
+                <li><a href="newsletters/" download>
                     Women's Conference Program
+                </a></li>
+            </ul>
+        </div>
+    </details>
+        
+        
+        <details>
+        <summary>September 2025</summary>
+        <div class="newsletter-content">
+            <ul class="newsletter-list">
+                <li><a href="newsletters/newsletter Youth Robing Service.pdf" download>
+                    Youth Robing Service
+                </a></li>
+            </ul>
+                        <ul class="newsletter-list">
+                <li><a href="newsletters/newsletter Youth Robing Service.pdf" download>
+                   The Nakane's Wedding Celebration
                 </a></li>
             </ul>
         </div>
@@ -579,40 +192,6 @@
     </details>
 
   </main>
-
-  <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Mobile Navigation Toggle Logic (Sliding Menu) ---
-            const hamburger = document.getElementById('hamburger');
-            const menuPanel = document.getElementById('mobile-menu-panel');
-            const overlay = document.getElementById('menu-overlay');
-            const menuLinks = menuPanel.querySelectorAll('a');
-
-            const toggleMenu = () => {
-                const isOpen = menuPanel.classList.contains('open');
-                if (isOpen) {
-                    menuPanel.classList.remove('open');
-                    // Delay hiding overlay to allow CSS transition to finish
-                    setTimeout(() => overlay.style.display = 'none', 300);
-                    hamburger.setAttribute('aria-expanded', 'false');
-                } else {
-                    overlay.style.display = 'block';
-                    // Delay opening panel slightly after showing overlay
-                    setTimeout(() => menuPanel.classList.add('open'), 10);
-                    hamburger.setAttribute('aria-expanded', 'true');
-                }
-            };
-
-            if (hamburger && menuPanel) {
-                hamburger.addEventListener('click', toggleMenu);
-                overlay.addEventListener('click', toggleMenu); 
-                
-                // Close menu when a link is clicked
-                menuLinks.forEach(link => {
-                    link.addEventListener('click', toggleMenu);
-                });
-            }
-        });
-    </script>
+      
 </body>
 </html>
