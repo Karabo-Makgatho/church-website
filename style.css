@@ -465,19 +465,11 @@ main h1{
             padding: 20px;
             max-width: 900px;
         }
-.header-chaplain-only{
+.header-chaplain{
     min-height: 100vh;
     width: 100%;
     background-position: center;
     background-color: gray;
-    background-size: cover;
-    position: relative;
-}
-.header-chaplain{
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(Logos/newspaper.jpg);
-    background-position: center;
     background-size: cover;
     position: relative;
 }
@@ -487,7 +479,7 @@ main h1{
             margin: 20px auto 50px;
             padding: 30px;
             border-radius: 12px;
-            background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(Logos/banner4.jpg);
+            /*background-color: white*/
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
