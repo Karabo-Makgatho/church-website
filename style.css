@@ -89,12 +89,7 @@ nav .fa{
 }
 @media(max-width: 700px) {
 .header{
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(Logos/banner4.jpg);
-    background-position: center;
-    background-size: cover;
-    position: relative;
+    min-height: 50vh;
 }
     .text-box h1{
     font-size: 15px;
@@ -267,7 +262,7 @@ p{
 }
 main h1{
     color: white;
-    margin-left: 450px;
+    text-align: center;
 }
 
      /* --- SLIDING MENU STYLES --- */
@@ -465,7 +460,7 @@ main h1{
             padding: 20px;
             max-width: 900px;
         }
-.header-chaplain{
+.header-chaplain-only{
     min-height: 100vh;
     width: 100%;
     background-position: center;
