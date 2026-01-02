@@ -87,12 +87,17 @@ nav img{
 nav .fa{
     display: none;
 }
-@media (min-width: 769px) and (max-width: 1100px) {
+@media screen and (min-width: 769px) and  {
 .header{
-    min-height: 50vh;
+       background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(Logos/banner4.jpg);
+        background-size: contain;
 }
     .text-box h1{
-    font-size: 15px;
+    font-size: 10px;
+}
+nav img{
+    width: 50px;
+    border-radius: 100px;
 }
     /*.nav-links ul li{
         display: block;
@@ -255,8 +260,7 @@ p{
 .headerr{
     min-height: 100vh;
     width: 100%;
-    background-image: url(Logos/newspaper3.jpg);
-    /*background-image: linear-gradient(rgba(4,9,30,0.7)), url(Logos/newspaper3.jpg);*/
+    background-image: linear-gradient(rgba(4,9,30,0.7)), url(Logos/newspaper3.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -613,7 +617,7 @@ main h1{
 .header-bible{
     min-height: 100vh;
     width: 100%;
-    background-color: gold;
+    background-color: rgb(87, 128, 180);
     background-position: center;
     background-size: cover;
     position: relative;
