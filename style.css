@@ -88,10 +88,18 @@ nav .fa{
     display: none;
 }
 @media(max-width: 700px) {
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(Logos/banner4.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
     .text-box h1{
     font-size: 20px;
 }
-    .nav-links ul li{
+    /*.nav-links ul li{
         display: block;
     }
     .nav-links{
@@ -113,7 +121,7 @@ nav .fa{
     }
     .nav-links ul{
         padding: 30px;
-    }
+    }*/
     .statements{
             display: flex;
             justify-content: center;
@@ -322,22 +330,6 @@ main h1{
             padding: 20px;
             max-width: 1200px;
             margin: 20px auto;
-        }
-
-            /* Corrected selector: Only show a couple of logos on small screen */
-            #logo-strip img:nth-child(n+3) { /* Hide logo 3 and onwards */
-                display: none;
-            }
-        
-
-        @media (max-width: 480px) {
-            /* Slightly reduce top padding since the header is smaller */
-            body {
-                padding-top: 70px;
-            }
-            :root {
-                --header-height: 70px;
-            }
         }
 
         /* ====================================
