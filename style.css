@@ -892,3 +892,65 @@ main h1{
                 grid-template-columns: 1fr; /* 1 profile per row */
             }
         }
+
+        /* ==================================================
+           Mobile nav + header tweaks (make index look like newsletters)
+           ================================================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+            nav img {
+                width: 60px;
+            }
+            /* Slide-in mobile menu for small screens */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -260px;
+                height: 100vh;
+                width: 260px;
+                background: rgba(4,9,30,0.95);
+                text-align: left;
+                padding: 40px 20px 20px 20px;
+                transition: right 0.28s ease;
+                z-index: 2000;
+                box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+            }
+            .nav-links ul {
+                display: block;
+                padding: 0;
+                margin-top: 36px;
+            }
+            .nav-links ul li {
+                display: block;
+                padding: 10px 0;
+            }
+            nav .fa {
+                display: block;
+                color: #fff;
+                font-size: 22px;
+                cursor: pointer;
+            }
+            .nav-links i.fa-times {
+                position: absolute;
+                top: 12px;
+                right: 16px;
+                font-size: 20px;
+            }
+            /* adjust hero position so heading doesn't overflow */
+            .text-box {
+                position: relative;
+                top: 30%;
+                transform: translate(-50%,-30%);
+                padding: 0 18px;
+            }
+        }
+
+        .nav-links.open { right: 0; }
+
+        @media (max-width: 480px) {
+            .text-box { top: 25%; transform: translate(-50%,-25%); }
+            nav img { width: 50px; }
+            nav { padding: 0.5rem 0.75rem; }
+        }
